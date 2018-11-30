@@ -1,10 +1,9 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   transform: {
     ".(ts|tsx)": "ts-jest"
   },
-  testPathIgnorePatterns: ["/node_modules/", "/lib/"],
-  // testRegex: "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+  testPathIgnorePatterns: ["/node_modules/", "/lib/", "/\.storybook/"],
   moduleFileExtensions: ["ts", "tsx", "js", "json"],
 };

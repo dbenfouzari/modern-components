@@ -1,7 +1,7 @@
 {
-  "name": "react-babel-typescript",
-  "version": "0.1.0",
-  "description": "This is a simple template for running React with Babel and TypeScript without CRA",
+  "name": "@dbenfouzari/modern-components",
+  "version": "0.0.1",
+  "description": "Modern components library",
   "main": "lib/index.js",
   "author": "Donovan BENFOUZARI <d.benfouzari@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,9 @@
     "type-check:watch": "yarn type-check --watch",
     "build": "yarn build:types && yarn build:js",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "start": "start-storybook -p 9001 -c .storybook",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -20,10 +22,24 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
+    "@storybook/addon-actions": "^4.0.9",
+    "@storybook/addon-info": "^4.0.9",
+    "@storybook/addons": "^4.0.9",
+    "@storybook/react": "^4.0.9",
+    "@types/jest": "^23.3.10",
     "@types/react": "^16.7.10",
     "@types/react-dom": "^16.0.11",
+    "@types/storybook__addon-actions": "^3.4.1",
+    "@types/storybook__addon-info": "^3.4.2",
+    "@types/storybook__react": "^4.0.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.4",
+    "jest": "^23.6.0",
     "react": "^16.6.3",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.6.3",
+    "react-test-renderer": "^16.6.3",
+    "ts-jest": "^23.10.5",
     "typescript": "^3.2.1"
   },
   "peerDependencies": {

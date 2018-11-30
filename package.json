@@ -8,9 +8,9 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch",
-    "build": "yarn build:types && yarn build:js",
+    "build": "rimraf lib && yarn build:types && yarn build:js",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps",
     "start": "start-storybook -p 9001 -c .storybook",
     "test": "jest"
   },
@@ -39,6 +39,7 @@
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
+    "rimraf": "^2.6.2",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.1"
   },

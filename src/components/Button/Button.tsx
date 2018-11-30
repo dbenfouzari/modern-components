@@ -1,13 +1,5 @@
 import * as React from 'react';
-
-const buttonStyles = {
-  backgroundColor: '#f00',
-  color: '#fff',
-  border: 0,
-  fontSize: 14,
-  padding: '5px 10px',
-  borderRadius: 2
-};
+import { StyledButton } from './Button.styles';
 
 interface ButtonProps {
   /**
@@ -36,7 +28,7 @@ interface ButtonProps {
  * This is a simple button
  */
 const Button = ({ children, onClick }: ButtonProps) => (
-  <button style={buttonStyles} onClick={onClick}>{children}</button>
+  <StyledButton onClick={onClick}>{children}</StyledButton>
 );
 
 export default Button;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+.c0 {
+  border-radius: 2px;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+<button
+  className="c0"
+>
+  Hello World!
+</button>
+`;

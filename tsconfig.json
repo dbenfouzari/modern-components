@@ -61,6 +61,8 @@
     "node_modules",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
+    "src/**/*.styles.ts",
+    "src/**/*.styles.tsx",
     "src/**/*.stories.ts",
     "src/**/*.stories.tsx"
   ]

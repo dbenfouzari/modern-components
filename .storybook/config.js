@@ -10,7 +10,7 @@ const mainTheme = {
 
 const testTheme = {
   name: 'test',
-  primaryColor: '#0f0'
+  primaryColor: '#f00'
 };
 
 const themes = [mainTheme, testTheme];

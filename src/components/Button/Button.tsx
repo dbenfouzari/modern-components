@@ -5,7 +5,6 @@ interface ButtonProps {
   /**
    * @since 0.0.1
    * @version 0.0.1
-   * @author Donovan BENFOUZARI <d.benfouzari@gmail.com>
    * 
    * What will be shown in the button
    */
@@ -13,11 +12,26 @@ interface ButtonProps {
   /**
    * @since 0.0.1
    * @version 0.0.1
-   * @author Donovan BENFOUZARI <d.benfouzari@gmail.com>
    * 
    * The action that will be called when user clicks
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /**
+   * @since 0.0.1
+   * @version 0.0.1
+   * @default true
+   * 
+   * Should show as raised ?
+   */
+  raised?: boolean;
+  /**
+   * @since 0.0.1
+   * @version 0.0.1
+   * @default "button"
+   * 
+   * Should show as raised ?
+   */
+  type?: "button" | "submit" | "reset";
 }
 
 /**
@@ -27,8 +41,8 @@ interface ButtonProps {
  * 
  * This is a simple button
  */
-const Button = ({ children, onClick }: ButtonProps) => (
-  <StyledButton onClick={onClick}>{children}</StyledButton>
+const Button = ({ children, onClick, raised = true, type = "button" }: ButtonProps) => (
+  <StyledButton type={type} role="button" raised={raised} onClick={onClick}>{children}</StyledButton>
 );
 
 export default Button;

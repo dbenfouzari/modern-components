@@ -1,10 +1,11 @@
 import { configure, addDecorator } from '@storybook/react';
 import { withInfo } from "@storybook/addon-info";
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
+import defaultTheme from '../src/theme';
 
 const mainTheme = {
   name: 'main',
-  primaryColor: '#f00'
+  ...defaultTheme
 };
 
 const testTheme = {

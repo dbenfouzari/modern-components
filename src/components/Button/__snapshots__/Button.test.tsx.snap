@@ -2,15 +2,61 @@
 
 exports[`Button renders correctly 1`] = `
 .c0 {
-  border-radius: 2px;
-  border: 0;
+  border-radius: 4px;
+  border: 0 solid;
+  border-bottom-width: 1px;
   color: #fff;
   font-size: 14px;
   padding: 5px 10px;
+  outline: none;
+  background-color: #28bcd6;
+  color: #fff;
+  border-color: #2096ab;
+}
+
+.c0:hover {
+  border-bottom-width: 3px;
+}
+
+.c0:active {
+  background-color: #2096ab;
 }
 
 <button
   className="c0"
+  role="button"
+  type="button"
+>
+  Hello World!
+</button>
+`;
+
+exports[`Button renders correctly when raised 1`] = `
+.c0 {
+  border-radius: 4px;
+  border: 0 solid;
+  border-bottom-width: 1px;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  outline: none;
+  background-color: #28bcd6;
+  color: #fff;
+  border-color: #2096ab;
+}
+
+.c0:hover {
+  border-bottom-width: 3px;
+}
+
+.c0:active {
+  background-color: #2096ab;
+}
+
+<button
+  className="c0"
+  role="button"
+  type="button"
 >
   Hello World!
 </button>

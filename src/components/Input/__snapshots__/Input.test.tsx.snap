@@ -5,59 +5,22 @@ exports[`Input renders correctly 1`] = `
   border-radius: 4px;
   border: 0 solid;
   border-bottom-width: 1px;
-  color: #fff;
   font-size: 14px;
   padding: 5px 10px;
   outline: none;
   background-color: #fff;
   color: #28bcd6;
-  border: 0;
 }
 
-.c0:hover {
-  border-bottom-width: 3px;
-}
-
+.c0:focus,
 .c0:active {
-  background-color: #2096ab;
+  border-bottom-width: 3px;
 }
 
 <input
   className="c0"
-  role="button"
+  onChange={[Function]}
   type="text"
->
-  Hello World!
-</input>
-`;
-
-exports[`Input renders correctly when raised 1`] = `
-.c0 {
-  border-radius: 4px;
-  border: 0 solid;
-  border-bottom-width: 1px;
-  color: #fff;
-  font-size: 14px;
-  padding: 5px 10px;
-  outline: none;
-  background-color: #fff;
-  color: #28bcd6;
-  border: 0;
-}
-
-.c0:hover {
-  border-bottom-width: 3px;
-}
-
-.c0:active {
-  background-color: #2096ab;
-}
-
-<input
-  className="c0"
-  role="button"
-  type="text"
->
-  Hello World!
-</input>
+  value="test"
+/>
 `;

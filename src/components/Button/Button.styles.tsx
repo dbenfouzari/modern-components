@@ -15,18 +15,18 @@ export const StyledButton = styled.button<{ raised?: boolean }>`
   }
 
   &:active {
-    background-color: ${props => darken(0.1, props.theme.primaryColor)};
+    background-color: ${(props) => darken(0.1, props.theme.primaryColor)};
   }
 
-  ${props => props.raised
+  ${(props) => props.raised
     ? css`
-      background-color: ${props => props.theme.primaryColor};
+      background-color: ${props.theme.primaryColor};
       color: #fff;
-      border-color: ${props => darken(0.1, props.theme.primaryColor)};
+      border-color: ${darken(0.1, props.theme.primaryColor)};
     `
     : css`
       background-color: #fff;
-      color: ${props => props.theme.primaryColor};
+      color: ${props.theme.primaryColor};
       border: 0;
     `
   }

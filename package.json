@@ -12,7 +12,8 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps",
     "start": "start-storybook -p 9001 -c .storybook",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tslint --project tsconfig.lint.json -t codeFrame"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -50,6 +51,7 @@
     "rimraf": "^2.6.2",
     "storybook-addon-styled-component-theme": "^1.1.0",
     "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
     "typescript": "^3.2.1",
     "typescript-plugin-styled-components": "^1.0.0"
   },

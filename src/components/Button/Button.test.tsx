@@ -1,31 +1,31 @@
-import * as React from 'react';
-import renderer from 'react-test-renderer';
-import Button from './Button';
-import { ThemeProvider } from '../../styled-components';
-import defaultTheme from '../../theme';
+import * as React from "react";
+import renderer from "react-test-renderer";
+import { ThemeProvider } from "../../styled-components";
+import defaultTheme from "../../theme";
+import Button from "./Button";
 
-describe('Button', () => {
-  it('renders correctly', () => {
+describe("Button", () => {
+  it("renders correctly", () => {
     const wrapper = renderer
       .create(
         <ThemeProvider theme={defaultTheme}>
           <Button>Hello World!</Button>
-        </ThemeProvider>
+        </ThemeProvider>,
       )
-      .toJSON()
+      .toJSON();
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('renders correctly when raised', () => {
+  it("renders correctly when raised", () => {
     const wrapper = renderer
       .create(
         <ThemeProvider theme={defaultTheme}>
           <Button raised>Hello World!</Button>
-        </ThemeProvider>
+        </ThemeProvider>,
       )
-      .toJSON()
+      .toJSON();
 
     expect(wrapper).toMatchSnapshot();
   });
-})
+});

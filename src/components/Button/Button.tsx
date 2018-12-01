@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { StyledButton } from './Button.styles';
+import * as React from "react";
+import { StyledButton } from "./Button.styles";
 
 interface ButtonProps {
   /**
    * What will be shown in the button
-
+   *
    * @since 0.0.1
    * @version 0.0.1
    */
   children: JSX.Element | JSX.Element[] | string | number;
   /**
    * The action that will be called when user clicks
-   * 
+   *
    * @since 0.0.1
    * @version 0.0.1
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   /**
    * Should show as raised ?
-   * 
+   *
    * @since 0.0.1
    * @version 0.0.1
    * @default true

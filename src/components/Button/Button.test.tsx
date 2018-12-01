@@ -1,3 +1,4 @@
+import { shallow } from "enzyme";
 import * as React from "react";
 import renderer from "react-test-renderer";
 import { ThemeProvider } from "../../styled-components";
@@ -27,5 +28,14 @@ describe("Button", () => {
       .toJSON();
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it("effectively calls onClick handler", () => {
+    const onClick = jest.fn();
+
+    const wrapper = shallow(<Button onClick={onClick}>Test</Button>);
+    wrapper.simulate("click");
+
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

@@ -23,6 +23,12 @@ export const InputWrapper = styled(
       : null}
 `;
 
+export const Input = styled.input`
+  flex: 1;
+  border: 0;
+  outline: none;
+`;
+
 export const Tag = styled.span`
   background-color: ${props => lighten(0.3, props.theme.primaryColor)};
   border-radius: 2px;
@@ -37,15 +43,13 @@ export const Tag = styled.span`
     right: 4px;
   }
 
+  & + ${Input} {
+    margin-left: 5px;
+  }
+
   & + & {
     margin-left: 5px;
   }
-`;
-
-export const Input = styled.input`
-  flex: 1;
-  border: 0;
-  outline: none;
 `;
 
 export const OptionsWrapper = styled.ul`

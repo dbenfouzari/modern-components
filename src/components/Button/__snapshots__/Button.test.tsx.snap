@@ -9,9 +9,9 @@ exports[`Button renders correctly 1`] = `
   font-size: 14px;
   padding: 5px 10px;
   outline: none;
-  background-color: #28bcd6;
+  background-color: #3498DB;
   color: #fff;
-  border-color: #2096ab;
+  border-color: #2980B9;
 }
 
 .c0:hover {
@@ -19,7 +19,7 @@ exports[`Button renders correctly 1`] = `
 }
 
 .c0:active {
-  background-color: #2096ab;
+  background-color: #2980B9;
 }
 
 <button
@@ -40,9 +40,9 @@ exports[`Button renders correctly when raised 1`] = `
   font-size: 14px;
   padding: 5px 10px;
   outline: none;
-  background-color: #28bcd6;
+  background-color: #3498DB;
   color: #fff;
-  border-color: #2096ab;
+  border-color: #2980B9;
 }
 
 .c0:hover {
@@ -50,7 +50,7 @@ exports[`Button renders correctly when raised 1`] = `
 }
 
 .c0:active {
-  background-color: #2096ab;
+  background-color: #2980B9;
 }
 
 <button

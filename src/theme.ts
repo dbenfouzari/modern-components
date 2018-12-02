@@ -1,9 +1,7 @@
-export interface ThemeInterface {
-  primaryColor: string;
-}
+import palette from './palette';
 
-const defaultTheme: ThemeInterface = {
-  primaryColor: "#28bcd6"
-};
+export type ThemeInterface = typeof palette;
+
+const defaultTheme = palette;
 
 export default defaultTheme;

@@ -41,7 +41,6 @@ interface InputProps {
  */
 const Input = ({ value, onChange, children, disabled }: InputProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(":)");
     onChange(event.currentTarget.checked);
   };
 

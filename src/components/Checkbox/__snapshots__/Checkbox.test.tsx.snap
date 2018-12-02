@@ -6,6 +6,15 @@ exports[`Checkbox renders correctly 1`] = `
   left: -9999px;
 }
 
+.c0:disabled + label:before {
+  cursor: not-allowed;
+  background-color: #97cec4;
+}
+
+.c0:disabled + label:after {
+  cursor: not-allowed;
+}
+
 .c0 + label {
   position: relative;
   padding-left: 25px;
@@ -19,7 +28,7 @@ exports[`Checkbox renders correctly 1`] = `
   top: 2px;
   width: 17px;
   height: 17px;
-  border: 1px solid #28bcd6;
+  border: 1px solid #3498DB;
   border-radius: 3px;
 }
 
@@ -29,7 +38,7 @@ exports[`Checkbox renders correctly 1`] = `
   top: 0;
   left: 4px;
   font-size: 19px;
-  color: #28bcd6;
+  color: #3498DB;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -52,8 +61,8 @@ exports[`Checkbox renders correctly 1`] = `
   className=""
 >
   <input
-    checked={true}
     className="c0"
+    defaultChecked={true}
     onChange={[Function]}
     type="checkbox"
   />

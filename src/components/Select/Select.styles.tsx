@@ -1,4 +1,3 @@
-import { lighten } from "polished";
 import * as React from "react";
 import styled, { css } from "../../styled-components";
 
@@ -10,7 +9,7 @@ export const InputWrapper = styled(
   ({ isOpen, ...rest }: { isOpen: boolean }) => <div {...rest} />
 )`
   border-radius: 4px;
-  border: 1px solid ${props => props.theme.primaryColor};
+  border: 1px solid ${props => props.theme.peterRiver};
   display: flex;
   padding: 5px;
 
@@ -30,9 +29,9 @@ export const Input = styled.input`
 `;
 
 export const Tag = styled.span`
-  background-color: ${props => lighten(0.3, props.theme.primaryColor)};
+  background-color: ${props => props.theme.peterRiver};
   border-radius: 2px;
-  border: 1px solid ${props => props.theme.primaryColor};
+  border: 1px solid ${props => props.theme.peterRiver};
   font-size: 0.8em;
   padding: 2px 15px 2px 2px;
   position: relative;
@@ -55,7 +54,7 @@ export const Tag = styled.span`
 export const OptionsWrapper = styled.ul`
   background-color: #fff;
   border-radius: 0 0 4px 4px;
-  border: 1px solid ${props => props.theme.primaryColor};
+  border: 1px solid ${props => props.theme.peterRiver};
   border-top: none;
   box-sizing: border-box;
   list-style: none;
@@ -73,7 +72,7 @@ export const Option = styled.li<{ isFocused?: boolean }>`
   ${props =>
     props.isFocused
       ? css`
-          background-color: ${lighten(0.2, props.theme.primaryColor)};
+          background-color: ${props.theme.peterRiver};
         `
       : null}
 
@@ -81,7 +80,7 @@ export const Option = styled.li<{ isFocused?: boolean }>`
     props.onMouseDown
       ? css`
           &:hover {
-            background-color: ${lighten(0.2, props.theme.primaryColor)};
+            background-color: ${props.theme.peterRiver};
           }
         `
       : null}

@@ -1,4 +1,4 @@
-import { lighten, mix } from "polished";
+import { mix } from "polished";
 import styled from "../../styled-components";
 
 export const CheckboxWrapper = styled.span``;
@@ -8,8 +8,7 @@ export const StyledCheckbox = styled.input`
 
   &:disabled + label:before {
     cursor: not-allowed;
-    background-color: ${props =>
-      mix(0.6, "#eee", lighten(0.2, props.theme.primaryColor))};
+    background-color: ${props => mix(0.6, "#eee", props.theme.greenSea)};
   }
 
   &:disabled + label:after {
@@ -28,7 +27,7 @@ export const StyledCheckbox = styled.input`
       top: 2px;
       width: 17px;
       height: 17px;
-      border: 1px solid ${props => props.theme.primaryColor};
+      border: 1px solid ${props => props.theme.peterRiver};
       border-radius: 3px;
     }
 
@@ -38,7 +37,7 @@ export const StyledCheckbox = styled.input`
       top: 0;
       left: 4px;
       font-size: 19px;
-      color: ${props => props.theme.primaryColor};
+      color: ${props => props.theme.peterRiver};
       transition: all 0.2s ease;
     }
   }

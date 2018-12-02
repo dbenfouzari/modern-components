@@ -28,6 +28,11 @@ export const StyledButton = styled.button<{ raised?: boolean }>`
       : css`
           background-color: #fff;
           color: ${props.theme.primaryColor};
-          border: 0;
+          border: 1px solid ${props.theme.primaryColor};
+
+          &:active {
+            color: #fff;
+            background-color: ${props.theme.primaryColor};
+          }
         `}
 `;

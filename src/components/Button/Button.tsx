@@ -41,8 +41,15 @@ interface ButtonProps {
  * @version 0.0.1
  * @author Donovan BENFOUZARI <d.benfouzari@gmail.com>
  */
-const Button = ({ children, onClick, raised = true, type = "button" }: ButtonProps) => (
-  <StyledButton type={type} role="button" raised={raised} onClick={onClick}>{children}</StyledButton>
+const Button = ({
+  children,
+  onClick,
+  raised = true,
+  type = "button"
+}: ButtonProps) => (
+  <StyledButton type={type} role="button" raised={raised} onClick={onClick}>
+    {children}
+  </StyledButton>
 );
 
 export default Button;

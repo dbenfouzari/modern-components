@@ -9,7 +9,7 @@ export const StyledInput = styled.input`
   padding: 5px 10px;
   outline: none;
   background-color: #fff;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${props => props.theme.primaryColor};
 
   &:focus,
   &:active {

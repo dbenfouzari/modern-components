@@ -5,13 +5,15 @@ import { ThemeProvider } from "../../styled-components";
 import defaultTheme from "../../theme";
 import Input from "./Input";
 
+const noop = () => null;
+
 describe("Input", () => {
   it("renders correctly", () => {
     const wrapper = renderer
       .create(
         <ThemeProvider theme={defaultTheme}>
-          <Input value="test" onChange={() => null} />
-        </ThemeProvider>,
+          <Input value="test" onChange={noop} />
+        </ThemeProvider>
       )
       .toJSON();
 

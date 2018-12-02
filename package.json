@@ -13,7 +13,9 @@
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps",
     "start": "start-storybook -p 9001 -c .storybook",
     "test": "jest",
-    "lint": "tslint --project tsconfig.lint.json -t codeFrame"
+    "lint": "tslint --project tsconfig.lint.json -t codeFrame",
+    "prettier": "prettier --config .prettierrc src/**/*.{ts,tsx}",
+    "prettier:write": "yarn prettier --write"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -45,14 +47,18 @@
     "enzyme-to-json": "^3.3.4",
     "jest": "^23.6.0",
     "jest-styled-components": "^6.3.1",
+    "prettier": "^1.15.3",
     "react": "^16.7.0-alpha.2",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.7.0-alpha.2",
-    "react-test-renderer": "^16.6.3",
+    "react-test-renderer": "^16.7.0-alpha.2",
     "rimraf": "^2.6.2",
     "storybook-addon-styled-component-theme": "^1.1.0",
     "ts-jest": "^23.10.5",
     "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-react": "^3.6.0",
     "typescript": "^3.2.1",
     "typescript-plugin-styled-components": "^1.0.0"
   },

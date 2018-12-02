@@ -1,6 +1,12 @@
 import * as React from "react";
-import { useState } from "react";
-import { Input, InputWrapper, Option, OptionsWrapper, SelectWrapper, Tag } from "./Select.styles";
+import {
+  Input,
+  InputWrapper,
+  Option,
+  OptionsWrapper,
+  SelectWrapper,
+  Tag
+} from "./Select.styles";
 import { mapValueToLabelForOptions } from "./utils";
 
 export interface OptionType {
@@ -8,13 +14,15 @@ export interface OptionType {
   label: string | number;
 }
 
-interface KeyCodes { [asString: string]: number; }
+interface KeyCodes {
+  [asString: string]: number;
+}
 
 const KEY_CODES: KeyCodes = {
   BACKSPACE: 8,
   BOTTOM: 40,
   ENTER: 13,
-  UP: 38,
+  UP: 38
 };
 
 interface SelectProps {
@@ -38,13 +46,20 @@ interface SelectProps {
    * @since 0.0.1
    * @version 0.0.1
    */
-  options: OptionType[] ;
+  options: OptionType[];
 }
 
 const Select = (props: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [focusedOptionIndex, setFocusedOptionIndex] = useState(-1);
-  const [currentInput, setCurrentInput] = useState("");
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [focusedOptionIndex, setFocusedOptionIndex] = React.useState(-1);
+  const [currentInput, setCurrentInput] = React.useState("");
+
+  const onFocus = () => {
+    setIsOpen(true);
+  };
+  const onBlur = () => {
+    setIsOpen(false);
+  };
 
   const mapValueToLabel = mapValueToLabelForOptions(props.options);
 
@@ -60,22 +75,23 @@ const Select = (props: SelectProps) => {
 
   const onOptionRemove = (optionId: OptionType["value"]) => () => {
     const nextValue = [...props.value];
-    const optionIndex = props.value.findIndex((val) => val === optionId);
+    const optionIndex = props.value.findIndex(val => val === optionId);
 
     nextValue.splice(optionIndex, 1);
 
-    props.onChange((nextValue as any));
+    props.onChange(nextValue as any);
   };
 
-  const notSelectedOptions: OptionType[] = props.options.filter((option) => (
-    !props.value.includes(option.value)
-  ));
+  const notSelectedOptions: OptionType[] = props.options.filter(
+    option => !props.value.includes(option.value)
+  );
 
-  const valueFilteredOptions: OptionType[] = notSelectedOptions
-    .filter((option) => {
+  const valueFilteredOptions: OptionType[] = notSelectedOptions.filter(
+    option => {
       const regex = new RegExp(currentInput, "gi");
       return regex.test(option.label.toString());
-    });
+    }
+  );
 
   const mapLabelToSearch = (label: OptionType["label"]) => {
     if (currentInput) {
@@ -89,7 +105,9 @@ const Select = (props: SelectProps) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     switch (event.keyCode) {
       case KEY_CODES.BACKSPACE:
-        if (event.currentTarget.value !== "") { return; }
+        if (event.currentTarget.value !== "") {
+          return;
+        }
 
         // Backspace pressed, but no value in the input.
         // So we should remove tag
@@ -137,7 +155,8 @@ const Select = (props: SelectProps) => {
       case KEY_CODES.ENTER:
         event.preventDefault();
         if (focusedOptionIndex > -1) {
-          const focusedOptionValue = valueFilteredOptions[focusedOptionIndex].value;
+          const focusedOptionValue =
+            valueFilteredOptions[focusedOptionIndex].value;
           const nextValue = [...props.value, focusedOptionValue];
           props.onChange(nextValue);
           setFocusedOptionIndex(-1);
@@ -153,38 +172,40 @@ const Select = (props: SelectProps) => {
   return (
     <SelectWrapper>
       <InputWrapper isOpen={isOpen}>
-        { props.value.map((value) => (
+        {props.value.map(value => (
           <Tag key={value}>
-            { mapValueToLabel(value) }
+            {mapValueToLabel(value)}
             <span onClick={onOptionRemove(value)}>&times;</span>
           </Tag>
-        )) }
+        ))}
 
         <Input
           value={currentInput}
           onChange={onInputChange}
-          onFocus={() => { setIsOpen(true); }}
-          onBlur={() => { setIsOpen(false); }}
+          onFocus={onFocus}
+          onBlur={onBlur}
           onKeyDown={handleKeyDown}
         />
       </InputWrapper>
 
-      { isOpen ? (
+      {isOpen ? (
         <OptionsWrapper>
-          { valueFilteredOptions.length > 0 ? (
+          {valueFilteredOptions.length > 0 ? (
             valueFilteredOptions.map((option, optionIndex) => (
               <Option
                 key={option.value}
                 onMouseDown={onOptionSelect(option.value)}
                 isFocused={focusedOptionIndex === optionIndex}
                 dangerouslySetInnerHTML={{
-                  __html: mapLabelToSearch(option.label),
+                  __html: mapLabelToSearch(option.label)
                 }}
               />
             ))
-          ) : <Option>No result</Option> }
+          ) : (
+            <Option>No result</Option>
+          )}
         </OptionsWrapper>
-      ) : null }
+      ) : null}
     </SelectWrapper>
   );
 };

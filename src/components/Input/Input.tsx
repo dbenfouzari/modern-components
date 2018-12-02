@@ -34,14 +34,16 @@ interface InputProps<T> {
  *
  * This is a simple input
  */
-const Input = ({ value, onChange, type = "text" }: InputProps<string | number>) => {
+const Input = ({
+  value,
+  onChange,
+  type = "text"
+}: InputProps<string | number>) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.currentTarget.value);
   };
 
-  return (
-    <StyledInput type={type} value={value} onChange={handleChange} />
-  );
+  return <StyledInput type={type} value={value} onChange={handleChange} />;
 };
 
 export default Input;

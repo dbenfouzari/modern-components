@@ -11,7 +11,7 @@ describe("Button", () => {
       .create(
         <ThemeProvider theme={defaultTheme}>
           <Button>Hello World!</Button>
-        </ThemeProvider>,
+        </ThemeProvider>
       )
       .toJSON();
 
@@ -22,8 +22,8 @@ describe("Button", () => {
     const wrapper = renderer
       .create(
         <ThemeProvider theme={defaultTheme}>
-          <Button raised>Hello World!</Button>
-        </ThemeProvider>,
+          <Button raised={true}>Hello World!</Button>
+        </ThemeProvider>
       )
       .toJSON();
 

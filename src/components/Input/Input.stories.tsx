@@ -6,7 +6,7 @@ import * as React from "react";
 import Input from ".";
 
 const store = new Store({
-  value: "Hello world !",
+  value: "Hello world !"
 });
 
 storiesOf("Input", module)
@@ -17,7 +17,5 @@ storiesOf("Input", module)
       store.set({ value: nextValue });
     };
 
-    return (
-      <Input value={store.get("value")} onChange={handleChange} />
-    );
+    return <Input value={store.get("value")} onChange={handleChange} />;
   });

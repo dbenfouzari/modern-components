@@ -18,6 +18,6 @@ storiesOf("Input", module)
     };
 
     return (
-      <Input value="Hello world !" onChange={handleChange} />
+      <Input value={store.get("value")} onChange={handleChange} />
     );
   });

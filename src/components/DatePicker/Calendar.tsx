@@ -2,7 +2,17 @@ import moment from "moment";
 import "moment/locale/fr";
 import * as React from "react";
 
-const generateWeek = (startDate: Date, endDate: Date) => {
+type DateFormat = "DD";
+
+interface CalendarProps {
+  dateFormat?: DateFormat;
+}
+
+const generateWeek = (
+  startDate: Date,
+  endDate: Date,
+  dateFormat: DateFormat
+) => {
   const daysBetween = moment(endDate).diff(moment(startDate), "days");
 
   const cells = [];
@@ -12,7 +22,8 @@ const generateWeek = (startDate: Date, endDate: Date) => {
       generateDayCell(
         moment(startDate)
           .add(i, "days")
-          .toDate()
+          .toDate(),
+        dateFormat
       )
     );
   }
@@ -24,15 +35,15 @@ const generateWeek = (startDate: Date, endDate: Date) => {
   );
 };
 
-const generateDayCell = (day: Date) => {
+const generateDayCell = (day: Date, dateFormat: DateFormat) => {
   return (
     <div style={{ flex: 1 }} key={day.toISOString()}>
-      {moment(day.toISOString()).format("YYYY-MM-DD")}
+      {moment(day.toISOString()).format(dateFormat)}
     </div>
   );
 };
 
-const generateMonth = (month: Date) => {
+const generateMonth = (month: Date, dateFormat: DateFormat) => {
   const rows = [];
 
   const firstDayOfMonth = moment(month)
@@ -57,7 +68,8 @@ const generateMonth = (month: Date) => {
           .startOf("month")
           .startOf("week")
           .add(i + 1, "week")
-          .toDate()
+          .toDate(),
+        dateFormat
       )
     );
   }
@@ -65,17 +77,18 @@ const generateMonth = (month: Date) => {
   return rows;
 };
 
-const Calendar = () => {
+const Calendar = ({ dateFormat = "DD" }: CalendarProps) => {
   return (
     <div
       style={{
         display: "flex",
         flex: 1,
         flexDirection: "column",
-        height: "100vh"
+        maxHeight: 500,
+        maxWidth: 500
       }}
     >
-      {generateMonth(new Date(2019, 0, 1))}
+      {generateMonth(new Date(2019, 0, 1), dateFormat)}
     </div>
   );
 };

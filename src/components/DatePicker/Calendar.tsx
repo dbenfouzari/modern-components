@@ -87,7 +87,7 @@ const generateMonth = (month: Date, dateFormat: DateFormat) => {
 
 class Calendar extends React.Component<CalendarProps, CalendarState> {
   public state = {
-    currentDate: new Date(1991, 10, 21)
+    currentDate: new Date(2019, 8, 21)
   };
 
   public render() {

@@ -1,13 +1,15 @@
 import styled from "../../styled-components";
 
 export const Cell = styled.div`
-  flex: 1;
+  display: table-cell;
   text-align: center;
+  font-size: 12px;
+  vertical-align: middle;
 `;
 
 export const Header = styled.div`
-  display: flex;
-  flex: 1;
+  display: table-row;
+  height: 24px;
 
   ${Cell} {
     font-weight: bold;
@@ -15,23 +17,18 @@ export const Header = styled.div`
 `;
 
 export const Week = styled.div`
-  flex: 1;
-  display: flex;
+  height: 24px;
+  display: table-row;
 `;
 
 export const Wrapper = styled.div`
-  box-shadow: 1px 3px 3px 0px rgba(100, 100, 100, 0.2);
-  border: 1px solid rgba(100, 100, 100, 0.1);
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  box-sizing: border-box;
+  display: table;
+  table-layout: fixed;
   max-height: 500px;
-  max-width: 500px;
-  padding: 15px;
+  width: 200px;
 `;
 
 export const CalendarContent = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: table-row-group;
 `;

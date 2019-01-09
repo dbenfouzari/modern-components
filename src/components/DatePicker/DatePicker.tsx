@@ -1,12 +1,26 @@
 import * as React from "react";
 import Calendar from "./Calendar";
 
-const DatePicker = () => (
-  <div>
-    <input type="text" />
+interface DatePickerState {
+  isCalendarShown: boolean;
+}
 
-    <Calendar />
-  </div>
-);
+class DatePicker extends React.Component<{}, DatePickerState> {
+  state = {
+    isCalendarShown: false
+  };
+
+  render () {
+    const { isCalendarShown } = this.state;
+
+    return (
+      <div>
+        <input type="text" />
+
+        { isCalendarShown ? <Calendar /> : null }
+      </div>
+    )
+  }
+}
 
 export default DatePicker;

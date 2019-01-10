@@ -31,6 +31,12 @@ interface DatePickerState {
   isCalendarShown: boolean;
 }
 
+/**
+ * A simple date picker that works great !
+ *
+ * @since 0.0.1
+ * @version 0.0.1
+ */
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   public state = {
     isCalendarShown: false

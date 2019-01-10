@@ -1,10 +1,26 @@
-import styled from "../../styled-components";
+import styled, { css } from "../../styled-components";
 
-export const Cell = styled.div`
+export const Cell = styled.div<{ isToday?: boolean }>`
   display: table-cell;
   text-align: center;
   font-size: 12px;
   vertical-align: middle;
+
+  ${props =>
+    props.isToday
+      ? css`
+          & > span {
+            align-items: center;
+            background-color: ${props.theme.belizeHole};
+            border-radius: 50%;
+            color: #fff;
+            display: inline-flex;
+            height: 24px;
+            justify-content: center;
+            width: 24px;
+          }
+        `
+      : null}
 `;
 
 export const Header = styled.div`

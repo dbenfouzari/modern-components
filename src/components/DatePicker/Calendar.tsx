@@ -50,8 +50,13 @@ const generateWeek = (
 
 const generateDayCell = (day: Date, dateFormat: DateFormat) => {
   return (
-    <Cell key={day.toISOString()}>
-      {moment(day.toISOString()).format(dateFormat)}
+    <Cell
+      key={day.toISOString()}
+      isToday={
+        new Date(day).toLocaleDateString() === new Date().toLocaleDateString()
+      }
+    >
+      <span>{moment(day.toISOString()).format(dateFormat)}</span>
     </Cell>
   );
 };

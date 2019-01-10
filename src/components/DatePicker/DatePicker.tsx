@@ -50,7 +50,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
         <Input
           type="text"
           onFocus={this.handleInputFocus}
-          value={value.toISOString()}
+          value={value.toLocaleDateString()}
           onChange={this.handleInputChange}
         />
 

@@ -57,7 +57,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
         {isCalendarShown ? (
           <Calendar
             value={value}
-            onChange={this.props.onChange}
+            onChange={this.handleChange}
             align={alignCalendar}
           />
         ) : null}
@@ -66,8 +66,8 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   }
 
   public handleChange = (nextValue: any) => {
-    this.props.onChange(nextValue);
     this.setState({ isCalendarShown: false });
+    this.props.onChange(nextValue);
   };
 
   public handleInputChange = (nextValue: string) => {

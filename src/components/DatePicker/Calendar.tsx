@@ -24,7 +24,7 @@ interface CalendarState {
 const generateWeek = (
   startDate: Date,
   endDate: Date,
-  dateFormat: DateFormat
+  { dateFormat, initialDate }: { dateFormat: DateFormat; initialDate: Date }
 ) => {
   const daysBetween = moment(endDate).diff(moment(startDate), "days");
 
@@ -36,7 +36,7 @@ const generateWeek = (
         moment(startDate)
           .add(i, "days")
           .toDate(),
-        dateFormat
+        { dateFormat, initialDate }
       )
     );
   }
@@ -48,10 +48,17 @@ const generateWeek = (
   );
 };
 
-const generateDayCell = (day: Date, dateFormat: DateFormat) => {
+const generateDayCell = (
+  day: Date,
+  { dateFormat, initialDate }: { dateFormat: DateFormat; initialDate: Date }
+) => {
   return (
     <Cell
       key={day.toISOString()}
+      isCurrentMonth={
+        new Date(day).getFullYear() === new Date(initialDate).getFullYear() &&
+        new Date(day).getMonth() === new Date(initialDate).getMonth()
+      }
       isToday={
         new Date(day).toLocaleDateString() === new Date().toLocaleDateString()
       }
@@ -87,7 +94,7 @@ const generateMonth = (month: Date, dateFormat: DateFormat) => {
           .startOf("week")
           .add(i + 1, "week")
           .toDate(),
-        dateFormat
+        { dateFormat, initialDate: month }
       )
     );
   }

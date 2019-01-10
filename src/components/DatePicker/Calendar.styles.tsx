@@ -1,10 +1,19 @@
 import styled, { css } from "../../styled-components";
 
-export const Cell = styled.div<{ isToday?: boolean }>`
+export const Cell = styled.div<{ isToday?: boolean; isCurrentMonth?: boolean }>`
   display: table-cell;
   text-align: center;
   font-size: 12px;
   vertical-align: middle;
+
+  ${props =>
+    !props.isCurrentMonth
+      ? css`
+          & > span {
+            color: ${props.theme.asbestos};
+          }
+        `
+      : null}
 
   ${props =>
     props.isToday

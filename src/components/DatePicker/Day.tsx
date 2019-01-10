@@ -1,8 +1,7 @@
 import moment from "moment";
 import * as React from "react";
-import { Cell, Day as StyledDay } from "./Calendar.styles";
-
 import { CurrentDateContext } from "./Calendar";
+import { Cell, Day as StyledDay } from "./Calendar.styles";
 
 interface DayProps {
   day: Date;

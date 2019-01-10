@@ -1,8 +1,8 @@
 import CalendarIcon from "mdi-react/CalendarIcon";
 import ChevronLeft from "mdi-react/ChevronLeftIcon";
 import ChevronRight from "mdi-react/ChevronRightIcon";
-import moment from "moment";
 import * as React from "react";
+import "../../tooltip.css";
 import { Arrows, CalendarNavigation, SelectedMonth } from "./Calendar.styles";
 
 interface NavigationProps {
@@ -21,17 +21,23 @@ interface ActionProps {
 const NavigationActions = React.memo(
   ({ onPrev, onNext, onToday }: ActionProps) => (
     <Arrows>
-      <span onClick={onToday}>
+      <span
+        onClick={onToday}
+        className="tooltip"
+        data-tooltip="Aller à aujourd'hui"
+      >
         <span>
           <CalendarIcon size={20} />
         </span>
       </span>
-      <span onClick={onPrev}>
+
+      <span onClick={onPrev} className="tooltip" data-tooltip="Mois précédent">
         <span>
           <ChevronLeft size={20} />
         </span>
       </span>
-      <span onClick={onNext}>
+
+      <span onClick={onNext} className="tooltip" data-tooltip="Mois suivant">
         <span>
           <ChevronRight size={20} />
         </span>

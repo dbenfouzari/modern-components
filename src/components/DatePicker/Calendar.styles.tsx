@@ -66,6 +66,7 @@ export const Cell = styled.div<{
   isCurrentMonth?: boolean;
   isCurrent?: boolean;
 }>`
+  cursor: default;
   display: table-cell;
   font-size: 12px;
   text-align: center;

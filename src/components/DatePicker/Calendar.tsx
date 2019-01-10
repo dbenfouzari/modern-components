@@ -13,6 +13,7 @@ import CalendarHeader from "./CalendarHeader";
 type DateFormat = "DD";
 
 interface CalendarProps {
+  value: string;
   dateFormat?: DateFormat;
 }
 
@@ -40,7 +41,11 @@ const generateWeek = (
     );
   }
 
-  return <Week>{cells}</Week>;
+  return (
+    <Week key={[new Date(startDate), new Date(endDate)].join("---")}>
+      {cells}
+    </Week>
+  );
 };
 
 const generateDayCell = (day: Date, dateFormat: DateFormat) => {
@@ -87,7 +92,7 @@ const generateMonth = (month: Date, dateFormat: DateFormat) => {
 
 class Calendar extends React.Component<CalendarProps, CalendarState> {
   public state = {
-    currentDate: new Date(2019, 8, 21)
+    currentDate: new Date(this.props.value)
   };
 
   public render() {

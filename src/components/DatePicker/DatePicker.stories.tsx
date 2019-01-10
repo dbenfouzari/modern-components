@@ -5,6 +5,8 @@ import * as React from "react";
 
 import DatePicker from ".";
 
+const noop = () => null;
+
 storiesOf("DatePicker", module).add("normal behavior", () => {
-  return <DatePicker />;
+  return <DatePicker value={new Date().toISOString()} onChange={noop} />;
 });

@@ -8,13 +8,45 @@ export const CalendarContainer = styled.div<{ align?: "left" | "right" }>`
   position: absolute;
   top: calc(100% + 10px);
 
+  &:after,
+  &:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #ffffff;
+    border-width: 11px;
+    margin-left: -11px;
+  }
+  &:before {
+    border-color: rgba(100, 100, 100, 0);
+    border-bottom-color: rgba(100, 100, 100, 0.2);
+    border-width: 12px;
+    margin-left: -12px;
+  }
+
   ${props =>
     props.align === "right"
       ? css`
           right: 10px;
+          &:after,
+          &:before {
+            right: 21px;
+          }
         `
       : css`
           left: 10px;
+          &:after,
+          &:before {
+            left: 21px;
+          }
         `}
 `;
 

@@ -59,7 +59,7 @@ const PropTable = (props) => {
           <StyledRow key={propDefIndex}>
             <StyledCell>{ propDef.property }</StyledCell>
             <StyledCell>{ propDef.propType.name }</StyledCell>
-            <StyledCell>{ propDef.required }</StyledCell>
+            <StyledCell>{ propDef.required ? 'true' : 'false' }</StyledCell>
             <StyledCell>{ propDef.defaultValue }</StyledCell>
             <StyledCell>{renderDefinition(propDef.description)}</StyledCell>
           </StyledRow>

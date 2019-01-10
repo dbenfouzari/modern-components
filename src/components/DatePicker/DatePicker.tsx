@@ -3,8 +3,27 @@ import Input from "../Input";
 import Calendar from "./Calendar";
 
 interface DatePickerProps {
+  /**
+   * The current date
+   *
+   * @since 0.0.1
+   * @version 0.0.1
+   */
   value: Date;
+  /**
+   * Will be called on date select
+   *
+   * @since 0.0.1
+   * @version 0.0.1
+   */
   onChange: (nextDate: Date) => void;
+  /**
+   * Calendar alignment
+   *
+   * @since 0.0.1
+   * @version 0.0.1
+   * @default "left"
+   */
   alignCalendar?: "left" | "right";
 }
 

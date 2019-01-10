@@ -8,10 +8,8 @@ const store = new Store({
   value: new Date()
 });
 
-const noop = () => null;
-
 storiesOf("DatePicker", module)
-  .addDecorator(StateDecorator(store))
+  .addDecorator(StateDecorator(store) as any)
   .add("normal behavior", () => {
     const handleChange = (nextDate: Date) => store.set({ value: nextDate });
 

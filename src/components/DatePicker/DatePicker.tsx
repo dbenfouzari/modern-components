@@ -5,6 +5,7 @@ import Calendar from "./Calendar";
 interface DatePickerProps {
   value: Date;
   onChange: (nextDate: Date) => void;
+  alignCalendar?: "left" | "right";
 }
 
 interface DatePickerState {
@@ -16,29 +17,39 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     isCalendarShown: false
   };
 
-  private inputRef = React.createRef<HTMLInputElement>();
   private datePickerRef = React.createRef<HTMLDivElement>();
 
   public render() {
-    const { value, onChange } = this.props;
+    const { value, alignCalendar } = this.props;
     const { isCalendarShown } = this.state;
 
     return (
-      <div style={{ display: "inline-block" }} ref={this.datePickerRef}>
+      <div
+        style={{ display: "inline-block", position: "relative" }}
+        ref={this.datePickerRef}
+      >
         <Input
           type="text"
-          ref={this.inputRef}
           onFocus={this.handleInputFocus}
           value={value.toISOString()}
           onChange={this.handleInputChange}
         />
 
         {isCalendarShown ? (
-          <Calendar value={value} onChange={this.props.onChange} />
+          <Calendar
+            value={value}
+            onChange={this.props.onChange}
+            align={alignCalendar}
+          />
         ) : null}
       </div>
     );
   }
+
+  public handleChange = (nextValue: any) => {
+    this.props.onChange(nextValue);
+    this.setState({ isCalendarShown: false });
+  };
 
   public handleInputChange = (nextValue: string) => {
     this.props.onChange(new Date(nextValue));

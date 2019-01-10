@@ -1,12 +1,19 @@
 import { StateDecorator, Store } from "@sambego/storybook-state";
-import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 import DatePicker from ".";
 
+const store = new Store({
+  value: new Date()
+});
+
 const noop = () => null;
 
-storiesOf("DatePicker", module).add("normal behavior", () => {
-  return <DatePicker value={new Date()} onChange={noop} />;
-});
+storiesOf("DatePicker", module)
+  .addDecorator(StateDecorator(store))
+  .add("normal behavior", () => {
+    const handleChange = (nextDate: Date) => store.set({ value: nextDate });
+
+    return <DatePicker value={store.get("value")} onChange={handleChange} />;
+  });

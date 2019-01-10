@@ -1,32 +1,73 @@
 import styled, { css } from "../../styled-components";
 
-export const Cell = styled.div<{ isToday?: boolean; isCurrentMonth?: boolean }>`
+export const CalendarContainer = styled.div<{ align?: "left" | "right" }>`
+  background-color: #fff;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+  box-shadow: 1px 1px 2px 0 rgba(100, 100, 100, 0.2);
+  padding: 10px;
+  position: absolute;
+  top: calc(100% + 10px);
+
+  ${props =>
+    props.align === "right"
+      ? css`
+          right: 10px;
+        `
+      : css`
+          left: 10px;
+        `}
+`;
+
+export const Day = styled.span`
+  align-items: center;
+  background-color: transparent;
+  border-radius: 50%;
+  display: inline-flex;
+  height: 24px;
+  justify-content: center;
+  transition: background-color 0.3s;
+  width: 24px;
+`;
+
+export const Cell = styled.div<{
+  isToday?: boolean;
+  isCurrentMonth?: boolean;
+  isCurrent?: boolean;
+}>`
   display: table-cell;
-  text-align: center;
   font-size: 12px;
+  text-align: center;
   vertical-align: middle;
+
+  &:hover {
+    ${Day} {
+      background-color: ${props => props.theme.clouds};
+    }
+  }
 
   ${props =>
     !props.isCurrentMonth
       ? css`
-          & > span {
-            color: ${props.theme.asbestos};
-          }
+          color: ${props.theme.asbestos};
         `
       : null}
 
   ${props =>
     props.isToday
       ? css`
-          & > span {
-            align-items: center;
+          ${Day} {
             background-color: ${props.theme.belizeHole};
-            border-radius: 50%;
             color: #fff;
-            display: inline-flex;
-            height: 24px;
-            justify-content: center;
-            width: 24px;
+          }
+        `
+      : null}
+
+  ${props =>
+    props.isCurrent
+      ? css`
+          ${Day} {
+            background-color: ${props.theme.peterRiver};
+            color: #fff;
           }
         `
       : null}
@@ -35,22 +76,18 @@ export const Cell = styled.div<{ isToday?: boolean; isCurrentMonth?: boolean }>`
 export const Header = styled.div`
   display: table-row;
   height: 24px;
-
-  ${Cell} {
-    font-weight: bold;
-  }
 `;
 
 export const Week = styled.div`
-  height: 24px;
   display: table-row;
+  height: 24px;
 `;
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
   display: table;
-  table-layout: fixed;
   max-height: 500px;
+  table-layout: fixed;
   width: 200px;
 `;
 
@@ -59,11 +96,32 @@ export const CalendarContent = styled.div`
 `;
 
 export const CalendarNavigation = styled.div`
+  align-items: center;
   display: flex;
+  height: 24px;
 `;
 
 export const SelectedMonth = styled.span`
   flex: 1;
 `;
 
-export const Arrows = styled.div``;
+export const Arrows = styled.div`
+  align-items: center;
+  display: flex;
+  height: 24px;
+
+  span {
+    display: inline-flex;
+    padding: 2px;
+  }
+
+  > span span {
+    background-color: transparent;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+
+  > span:hover span {
+    background-color: ${props => props.theme.clouds};
+  }
+`;

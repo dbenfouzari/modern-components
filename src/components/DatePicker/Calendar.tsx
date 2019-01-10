@@ -6,14 +6,17 @@ import "moment/locale/fr";
 import * as React from "react";
 import {
   Arrows,
+  CalendarContainer,
   CalendarContent,
   CalendarNavigation,
   Cell,
+  Day,
   SelectedMonth,
   Week,
   Wrapper
 } from "./Calendar.styles";
 import CalendarHeader from "./CalendarHeader";
+import Navigation from "./Navigation";
 
 type DateFormat = "DD";
 
@@ -21,6 +24,7 @@ interface CalendarProps {
   value: Date;
   onChange: (nextDate: Date) => void;
   dateFormat?: DateFormat;
+  align?: "left" | "right";
 }
 
 interface CalendarState {
@@ -33,11 +37,13 @@ const generateWeek = (
   {
     dateFormat,
     initialDate,
-    onDateClick
+    onDateClick,
+    currentDate
   }: {
     dateFormat: DateFormat;
     initialDate: Date;
     onDateClick: (selectedDate: Date) => void;
+    currentDate: Date;
   }
 ) => {
   const daysBetween = moment(endDate).diff(moment(startDate), "days");
@@ -50,7 +56,7 @@ const generateWeek = (
         moment(startDate)
           .add(i, "days")
           .toDate(),
-        { dateFormat, initialDate, onDateClick }
+        { dateFormat, initialDate, onDateClick, currentDate }
       )
     );
   }
@@ -67,11 +73,13 @@ const generateDayCell = (
   {
     dateFormat,
     initialDate,
-    onDateClick
+    onDateClick,
+    currentDate
   }: {
     dateFormat: DateFormat;
     initialDate: Date;
     onDateClick: (selectedDate: Date) => void;
+    currentDate: Date;
   }
 ) => {
   const handleDateClick = () => onDateClick(day);
@@ -86,9 +94,13 @@ const generateDayCell = (
       isToday={
         new Date(day).toLocaleDateString() === new Date().toLocaleDateString()
       }
+      isCurrent={
+        new Date(day).toLocaleDateString() ===
+        new Date(currentDate).toLocaleDateString()
+      }
       onClick={handleDateClick}
     >
-      <span>{moment(day.toISOString()).format(dateFormat)}</span>
+      <Day>{moment(day.toISOString()).format(dateFormat)}</Day>
     </Cell>
   );
 };
@@ -96,7 +108,8 @@ const generateDayCell = (
 const generateMonth = (
   month: Date,
   dateFormat: DateFormat,
-  onDateClick: (selectedDate: Date) => void
+  onDateClick: (selectedDate: Date) => void,
+  currentDate: Date
 ) => {
   const rows = [];
 
@@ -123,7 +136,7 @@ const generateMonth = (
           .startOf("week")
           .add(i + 1, "week")
           .toDate(),
-        { dateFormat, initialDate: month, onDateClick }
+        { dateFormat, initialDate: month, onDateClick, currentDate }
       )
     );
   }
@@ -131,36 +144,25 @@ const generateMonth = (
   return rows;
 };
 
-class Calendar extends React.Component<CalendarProps, CalendarState> {
+class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
   public state = {
     currentDate: new Date(this.props.value)
   };
 
   public render() {
-    const { dateFormat = "DD" } = this.props;
+    const { dateFormat = "DD", align } = this.props;
     const { currentDate } = this.state;
 
     return (
-      <div>
-        <CalendarNavigation>
-          <SelectedMonth>
-            {moment(currentDate)
-              .format("MMMM YYYY")
-              .replace(/^\w/, (firstChar: string) => firstChar.toUpperCase())}
-          </SelectedMonth>
-
-          <Arrows>
-            <span onClick={this.handleCurrentMonth}>
-              <CalendarIcon />
-            </span>
-            <span onClick={this.handlePrevMonth}>
-              <ChevronLeft />
-            </span>
-            <span onClick={this.handleNextMonth}>
-              <ChevronRight />
-            </span>
-          </Arrows>
-        </CalendarNavigation>
+      <CalendarContainer align={align}>
+        <Navigation
+          onPrev={this.handlePrevMonth}
+          onNext={this.handleNextMonth}
+          onToday={this.handleCurrentMonth}
+          currentDateString={moment(currentDate)
+            .format("MMMM YYYY")
+            .replace(/^\w/, (firstChar: string) => firstChar.toUpperCase())}
+        />
 
         <Wrapper>
           <CalendarHeader />
@@ -173,14 +175,12 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 currentDate.getDate()
               ),
               dateFormat,
-              this.handleDateSelect
+              this.handleDateSelect,
+              this.props.value
             )}
           </CalendarContent>
         </Wrapper>
-
-        <button onClick={this.handlePrevMonth}>Prev</button>
-        <button onClick={this.handleNextMonth}>Next</button>
-      </div>
+      </CalendarContainer>
     );
   }
 
@@ -188,30 +188,32 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     this.props.onChange(selectedDate);
   };
 
+  public setDate = (nextDate: Date) => {
+    if (nextDate.toDateString() !== this.state.currentDate.toDateString()) {
+      this.setState({
+        currentDate: nextDate
+      });
+    }
+  };
+
   public handleCurrentMonth = () => {
     const currentDate: Date = new Date();
 
-    this.setState({
-      currentDate
-    });
+    this.setDate(currentDate);
   };
 
   public handlePrevMonth = () => {
     const currentDate: Date = new Date(this.state.currentDate);
     currentDate.setMonth(currentDate.getMonth() - 1);
 
-    this.setState({
-      currentDate
-    });
+    this.setDate(currentDate);
   };
 
   public handleNextMonth = () => {
     const currentDate: Date = new Date(this.state.currentDate);
     currentDate.setMonth(currentDate.getMonth() + 1);
 
-    this.setState({
-      currentDate
-    });
+    this.setDate(currentDate);
   };
 }
 

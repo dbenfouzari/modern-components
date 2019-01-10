@@ -26,7 +26,6 @@ interface InputProps {
    */
   type?: "text" | "number" | "password";
   onFocus?: (event: React.FormEvent<HTMLInputElement>) => void;
-  ref?: any;
 }
 
 /**
@@ -36,13 +35,7 @@ interface InputProps {
  *
  * This is a simple input
  */
-const Input = ({
-  value,
-  onChange,
-  type = "text",
-  onFocus,
-  ref
-}: InputProps) => {
+const Input = ({ value, onChange, type = "text", onFocus }: InputProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.currentTarget.value);
   };
@@ -52,7 +45,7 @@ const Input = ({
       type={type}
       value={value}
       onChange={handleChange}
-      {...{ onFocus, ref }}
+      {...{ onFocus }}
     />
   );
 };

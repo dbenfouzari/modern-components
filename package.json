@@ -67,6 +67,7 @@
     "react-dom": "^16.6.3"
   },
   "dependencies": {
+    "mdi-react": "^5.1.0",
     "moment": "^2.22.2",
     "polished": "^2.3.0",
     "styled-components": "^4.1.2"

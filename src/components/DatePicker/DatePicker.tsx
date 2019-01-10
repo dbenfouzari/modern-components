@@ -3,8 +3,8 @@ import Input from "../Input";
 import Calendar from "./Calendar";
 
 interface DatePickerProps {
-  value: string;
-  onChange: (nextDate: string) => void;
+  value: Date;
+  onChange: (nextDate: Date) => void;
 }
 
 interface DatePickerState {
@@ -29,17 +29,19 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
           type="text"
           ref={this.inputRef}
           onFocus={this.handleInputFocus}
-          value={value}
+          value={value.toISOString()}
           onChange={this.handleInputChange}
         />
 
-        {isCalendarShown ? <Calendar value={value} /> : null}
+        {isCalendarShown ? (
+          <Calendar value={value} onChange={this.props.onChange} />
+        ) : null}
       </div>
     );
   }
 
   public handleInputChange = (nextValue: string) => {
-    this.props.onChange(nextValue);
+    this.props.onChange(new Date(nextValue));
   };
 
   public handleInputFocus = () => {

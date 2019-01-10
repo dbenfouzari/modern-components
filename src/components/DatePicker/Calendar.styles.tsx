@@ -57,3 +57,13 @@ export const Wrapper = styled.div`
 export const CalendarContent = styled.div`
   display: table-row-group;
 `;
+
+export const CalendarNavigation = styled.div`
+  display: flex;
+`;
+
+export const SelectedMonth = styled.span`
+  flex: 1;
+`;
+
+export const Arrows = styled.div``;

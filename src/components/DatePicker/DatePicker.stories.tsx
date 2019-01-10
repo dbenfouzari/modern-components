@@ -8,5 +8,5 @@ import DatePicker from ".";
 const noop = () => null;
 
 storiesOf("DatePicker", module).add("normal behavior", () => {
-  return <DatePicker value={new Date().toISOString()} onChange={noop} />;
+  return <DatePicker value={new Date()} onChange={noop} />;
 });

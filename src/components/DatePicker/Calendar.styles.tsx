@@ -78,7 +78,7 @@ export const Header = styled.div`
   height: 24px;
 `;
 
-export const Week = styled.div`
+export const StyledWeek = styled.div`
   display: table-row;
   height: 24px;
 `;

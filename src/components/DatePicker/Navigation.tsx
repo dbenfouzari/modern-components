@@ -2,7 +2,7 @@ import CalendarIcon from "mdi-react/CalendarIcon";
 import ChevronLeft from "mdi-react/ChevronLeftIcon";
 import ChevronRight from "mdi-react/ChevronRightIcon";
 import * as React from "react";
-import "../../tooltip.css";
+import "../Tooltip";
 import { Arrows, CalendarNavigation, SelectedMonth } from "./Calendar.styles";
 
 interface NavigationProps {

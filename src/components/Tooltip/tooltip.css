@@ -1,6 +1,6 @@
 .tooltip {
   --arrow-size: 6px;
-  --tooltip-top: 5px;
+  --tooltip-top: 15px;
 
   position: relative;
   box-sizing: border-box;

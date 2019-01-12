@@ -17,7 +17,8 @@ const testTheme = {
 const themes = [mainTheme, testTheme];
 
 addDecorator(withInfo({
-  TableComponent: TableComponent
+  TableComponent,
+  inline: true
 }));
 addDecorator(withThemesProvider(themes));
 

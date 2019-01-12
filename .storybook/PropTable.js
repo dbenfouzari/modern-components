@@ -1,6 +1,6 @@
 import * as React from "react";
 import doctrine from 'doctrine';
-import styled from "../lib/styled-components";
+import styled, { css } from "../lib/styled-components";
 
 const StyledTable = styled.div`
   display: table;
@@ -9,10 +9,20 @@ const StyledTable = styled.div`
 
 const StyledRow = styled.div`
   display: table-row;
+  box-shadow: 0 1px 2px 0 rgba(100, 100, 100, 0.3);
+
+  ${props => props.header ? css`
+    font-weight: bold;
+    
+    ${StyledCell} {
+      padding: 15px 10px;
+    }
+  ` : null}
 `;
 
 const StyledCell = styled.div`
   display: table-cell;
+  padding: 10px;
 `;
 
 const StyledTag = styled.span`
@@ -45,7 +55,7 @@ const PropTable = (props) => {
   // console.log({ props });
   return (
     <StyledTable>
-      <StyledRow>
+      <StyledRow header>
         <StyledCell>property</StyledCell>
         <StyledCell>propType</StyledCell>
         <StyledCell>required</StyledCell>

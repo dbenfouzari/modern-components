@@ -1,0 +1,561 @@
+[
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "",
+        "name": "name",
+        "parent": {
+          "fileName": "modern-components/src/components/Icon/Icon.tsx",
+          "name": "IconProps"
+        },
+        "required": true,
+        "type": {
+          "name": "IconProp"
+        }
+      }
+    }
+  },
+  {
+    "description": "@since 0.0.1\n@version 0.0.1\n@author Donovan BENFOUZARI <d.benfouzari\n@gmail .com>\n\nThis is a simple input",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "@since 0.0.1\n@version 0.0.1\n\nValue passed to the input",
+        "name": "value",
+        "parent": {
+          "fileName": "modern-components/src/components/Input/Input.tsx",
+          "name": "InputProps"
+        },
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "@since 0.0.1\n@version 0.0.1\n\nThe action that will be called when user types some text",
+        "name": "onChange",
+        "parent": {
+          "fileName": "modern-components/src/components/Input/Input.tsx",
+          "name": "InputProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextValue: string) => void"
+        }
+      },
+      "type": {
+        "defaultValue": {
+          "value": "\"text\""
+        },
+        "description": "@since 0.0.1\n@version 0.0.1\n\nInput type",
+        "name": "type",
+        "parent": {
+          "fileName": "modern-components/src/components/Input/Input.tsx",
+          "name": "InputProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"number\" | \"text\" | \"password\""
+        }
+      },
+      "onFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onFocus",
+        "parent": {
+          "fileName": "modern-components/src/components/Input/Input.tsx",
+          "name": "InputProps"
+        },
+        "required": false,
+        "type": {
+          "name": "(event: FormEvent<HTMLInputElement>) => void"
+        }
+      }
+    }
+  },
+  {
+    "description": "@since 0.0.1\n@version 0.0.1\n@author Donovan BENFOUZARI <d.benfouzari\n@gmail .com>\n\nThis is a simple input",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "@since 0.0.1\n@version 0.0.1\n\nValue passed to the checkbox",
+        "name": "value",
+        "parent": {
+          "fileName": "modern-components/src/components/Checkbox/Checkbox.tsx",
+          "name": "InputProps"
+        },
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "@since 0.0.1\n@version 0.0.1\n\nThe action that will be called when user checks/unchecks",
+        "name": "onChange",
+        "parent": {
+          "fileName": "modern-components/src/components/Checkbox/Checkbox.tsx",
+          "name": "InputProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextValue: boolean) => void"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "@since 0.0.1\n@version 0.0.1\n\nWhat will be aside to checkbox",
+        "name": "children",
+        "parent": {
+          "fileName": "modern-components/src/components/Checkbox/Checkbox.tsx",
+          "name": "InputProps"
+        },
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "@since 0.0.1\n@version 0.0.1\n\nIs it disabled ?",
+        "name": "disabled",
+        "parent": {
+          "fileName": "modern-components/src/components/Checkbox/Checkbox.tsx",
+          "name": "InputProps"
+        },
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
+  {
+    "description": "This is a simple button\n@since 0.0.1\n@version 0.0.1\n@author Donovan BENFOUZARI <d.benfouzari\n@gmail .com>",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "What will be shown in the button\n@since 0.0.1\n@version 0.0.1",
+        "name": "children",
+        "parent": {
+          "fileName": "modern-components/src/components/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": true,
+        "type": {
+          "name": "string | number | Element | Element[]"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "The action that will be called when user clicks\n@since 0.0.1\n@version 0.0.1",
+        "name": "onClick",
+        "parent": {
+          "fileName": "modern-components/src/components/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": {
+          "name": "(event: MouseEvent<HTMLButtonElement>) => void"
+        }
+      },
+      "raised": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Should show as raised ?\n@since 0.0.1\n@version 0.0.1",
+        "name": "raised",
+        "parent": {
+          "fileName": "modern-components/src/components/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "type": {
+        "defaultValue": {
+          "value": "\"button\""
+        },
+        "description": "Which button type ?\n@since 0.0.1\n@version 0.0.1",
+        "name": "type",
+        "parent": {
+          "fileName": "modern-components/src/components/Button/Button.tsx",
+          "name": "ButtonProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"button\" | \"submit\" | \"reset\""
+        }
+      }
+    }
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "The value\n@since 0.0.1\n@version 0.0.1",
+        "name": "value",
+        "parent": {
+          "fileName": "modern-components/src/components/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(string | number)[]"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "The handler\n@since 0.0.1\n@version 0.0.1",
+        "name": "onChange",
+        "parent": {
+          "fileName": "modern-components/src/components/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextValue: (string | number)[]) => void"
+        }
+      },
+      "options": {
+        "defaultValue": null,
+        "description": "This is the list of options you want to show to the user\n@since 0.0.1\n@version 0.0.1",
+        "name": "options",
+        "parent": {
+          "fileName": "modern-components/src/components/Select/Select.tsx",
+          "name": "SelectProps"
+        },
+        "required": true,
+        "type": {
+          "name": "OptionType[]"
+        }
+      }
+    }
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {}
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Calendar.tsx",
+          "name": "CalendarProps"
+        },
+        "required": true,
+        "type": {
+          "name": "Date"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Calendar.tsx",
+          "name": "CalendarProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextDate: Date) => void"
+        }
+      },
+      "dateFormat": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dateFormat",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Calendar.tsx",
+          "name": "CalendarProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"DD\""
+        }
+      },
+      "align": {
+        "defaultValue": null,
+        "description": "",
+        "name": "align",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Calendar.tsx",
+          "name": "CalendarProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\""
+        }
+      }
+    }
+  },
+  {
+    "description": "A simple date picker that works great !\n@since 0.0.1\n@version 0.0.1",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "The current date\n@since 0.0.1\n@version 0.0.1",
+        "name": "value",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/DatePicker.tsx",
+          "name": "DatePickerProps"
+        },
+        "required": true,
+        "type": {
+          "name": "Date"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Will be called on date select\n@since 0.0.1\n@version 0.0.1",
+        "name": "onChange",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/DatePicker.tsx",
+          "name": "DatePickerProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextDate: Date) => void"
+        }
+      },
+      "alignCalendar": {
+        "defaultValue": {
+          "value": "\"left\""
+        },
+        "description": "Calendar alignment\n@since 0.0.1\n@version 0.0.1",
+        "name": "alignCalendar",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/DatePicker.tsx",
+          "name": "DatePickerProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\""
+        }
+      }
+    }
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "day": {
+        "defaultValue": null,
+        "description": "",
+        "name": "day",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Day.tsx",
+          "name": "DayProps"
+        },
+        "required": true,
+        "type": {
+          "name": "Date"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClick",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Day.tsx",
+          "name": "DayProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(smth: any) => void"
+        }
+      },
+      "dateFormat": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dateFormat",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Day.tsx",
+          "name": "DayProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"DD\""
+        }
+      }
+    }
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "days": {
+        "defaultValue": null,
+        "description": "",
+        "name": "days",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Week.tsx",
+          "name": "WeekProps"
+        },
+        "required": true,
+        "type": {
+          "name": "Date[]"
+        }
+      },
+      "onDaySelect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onDaySelect",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Week.tsx",
+          "name": "WeekProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextDay: Date) => void"
+        }
+      },
+      "dateFormat": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dateFormat",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Week.tsx",
+          "name": "WeekProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"DD\""
+        }
+      }
+    }
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "weeks": {
+        "defaultValue": null,
+        "description": "",
+        "name": "weeks",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Weeks.tsx",
+          "name": "WeekProps"
+        },
+        "required": true,
+        "type": {
+          "name": "Date[][]"
+        }
+      },
+      "onDaySelect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onDaySelect",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Weeks.tsx",
+          "name": "WeekProps"
+        },
+        "required": true,
+        "type": {
+          "name": "(nextDay: Date) => void"
+        }
+      },
+      "dateFormat": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dateFormat",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Weeks.tsx",
+          "name": "WeekProps"
+        },
+        "required": false,
+        "type": {
+          "name": "\"DD\""
+        }
+      }
+    }
+  },
+  {
+    "description": "",
+    "displayName": "zbra",
+    "methods": [],
+    "props": {
+      "currentDateString": {
+        "defaultValue": null,
+        "description": "",
+        "name": "currentDateString",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Navigation.tsx",
+          "name": "NavigationProps"
+        },
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onPrev": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onPrev",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Navigation.tsx",
+          "name": "NavigationProps"
+        },
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onNext": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onNext",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Navigation.tsx",
+          "name": "NavigationProps"
+        },
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onToday": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onToday",
+        "parent": {
+          "fileName": "modern-components/src/components/DatePicker/Navigation.tsx",
+          "name": "NavigationProps"
+        },
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      }
+    }
+  }
+]

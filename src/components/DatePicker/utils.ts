@@ -1,5 +1,4 @@
 import moment from "moment";
-import * as React from "react";
 
 const generateWeek = (startDate: Date, endDate: Date) => {
   const daysBetween = moment(endDate).diff(moment(startDate), "days");

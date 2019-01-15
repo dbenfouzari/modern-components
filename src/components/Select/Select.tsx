@@ -49,6 +49,9 @@ interface SelectProps {
   options: OptionType[];
 }
 
+/**
+ * It's (actually) a select where you can select multiple options
+ */
 const Select = (props: SelectProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [focusedOptionIndex, setFocusedOptionIndex] = React.useState(-1);

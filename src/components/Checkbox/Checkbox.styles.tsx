@@ -1,21 +1,21 @@
 import { mix } from "polished";
 import styled from "../../styled-components";
 
-export const CheckboxWrapper = styled.span``;
-export const StyledCheckbox = styled.input`
+export const CheckboxWrapper = styled.label``;
+export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
   position: absolute;
   left: -9999px;
 
-  &:disabled + label:before {
+  &:disabled + span:before {
     cursor: not-allowed;
     background-color: ${props => mix(0.6, "#eee", props.theme.greenSea)};
   }
 
-  &:disabled + label:after {
+  &:disabled + span:after {
     cursor: not-allowed;
   }
 
-  & + label {
+  & + span {
     position: relative;
     padding-left: 25px;
     cursor: pointer;
@@ -34,7 +34,7 @@ export const StyledCheckbox = styled.input`
     &:after {
       content: "✔";
       position: absolute;
-      top: 0;
+      top: -3px;
       left: 4px;
       font-size: 19px;
       color: ${props => props.theme.peterRiver};
@@ -42,12 +42,12 @@ export const StyledCheckbox = styled.input`
     }
   }
 
-  &:not(:checked) + label:after {
+  &:not(:checked) + span:after {
     opacity: 0;
     transform: scale(0);
   }
 
-  &:checked + label:after {
+  &:checked + span:after {
     opacity: 1;
     transform: scale(1);
   }

@@ -1,0 +1,16 @@
+---
+name: Input
+---
+
+import { Playground, PropsTable } from 'docz';
+import Input from './';
+
+# Input
+
+<PropsTable of={Input} />
+
+## Basic usage
+
+<Playground>
+    <Input value="Hello world" onChange={(nextValue) => console.log(nextValue)} />
+</Playground>

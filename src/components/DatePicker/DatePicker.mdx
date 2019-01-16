@@ -1,0 +1,16 @@
+---
+name: DatePicker
+---
+
+import { Playground, PropsTable } from 'docz';
+import DatePicker from './';
+
+# DatePicker
+
+<PropsTable of={DatePicker} />
+
+## Basic usage
+
+<Playground>
+    <DatePicker value={new Date()} onChange={(nextDate) => console.log("next date :", nextDate)} />
+</Playground>

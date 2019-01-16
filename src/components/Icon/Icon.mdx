@@ -1,0 +1,26 @@
+---
+name: Icon
+---
+
+import { Playground, PropsTable } from 'docz';
+import Icon from './';
+
+# Icon
+
+See https://github.com/FortAwesome/react-fontawesome
+
+<PropsTable of={Icon} />
+
+## Basic usage
+
+<Playground>
+    <div>
+        <span>1x </span>
+        <Icon name={['fab', 'react']} />
+    </div>
+
+    <div>
+        <span>3x </span>
+        <Icon name={['fab', 'react']} size='3x' />
+    </div>
+</Playground>

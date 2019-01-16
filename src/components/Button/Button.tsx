@@ -41,7 +41,7 @@ interface ButtonProps {
  * @version 0.0.1
  * @author Donovan BENFOUZARI <d.benfouzari@gmail.com>
  */
-const Button = ({
+export const Button = ({
   children,
   onClick,
   raised = true,

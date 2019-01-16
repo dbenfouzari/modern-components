@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CheckboxWrapper, StyledCheckbox } from "./Checkbox.styles";
 
-interface InputProps {
+interface CheckboxProps {
   /**
    * @since 0.0.1
    * @version 0.0.1
@@ -39,7 +39,7 @@ interface InputProps {
  *
  * This is a simple input
  */
-const Input = ({ value, onChange, children, disabled }: InputProps) => {
+const Checkbox = ({ value, onChange, children, disabled }: CheckboxProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.currentTarget.checked);
   };
@@ -48,13 +48,12 @@ const Input = ({ value, onChange, children, disabled }: InputProps) => {
     <CheckboxWrapper>
       <StyledCheckbox
         disabled={disabled}
-        type="checkbox"
         onChange={handleChange}
-        defaultChecked={value}
+        checked={value}
       />
-      <label>{children}</label>
+      <span>{children}</span>
     </CheckboxWrapper>
   );
 };
 
-export default Input;
+export default Checkbox;

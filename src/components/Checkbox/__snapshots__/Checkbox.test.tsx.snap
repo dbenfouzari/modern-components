@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+.c0 {
+  position: absolute;
+  left: -9999px;
+}
+
+.c0:disabled + label:before {
+  cursor: not-allowed;
+  background-color: #97cec4;
+}
+
+.c0:disabled + label:after {
+  cursor: not-allowed;
+}
+
+.c0 + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.c0 + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #3498DB;
+  border-radius: 3px;
+}
+
+.c0 + label:after {
+  content: "✔";
+  position: absolute;
+  top: 0;
+  left: 4px;
+  font-size: 19px;
+  color: #3498DB;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.c0:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+<span
+  className=""
+>
+  <input
+    className="c0"
+    defaultChecked={true}
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label>
+    Coucou
+  </label>
+</span>
+`;

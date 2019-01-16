@@ -1,11 +1,18 @@
 {
-    "presets": [
-        "@babel/env",
-        "@babel/typescript"
-    ],
-    "plugins": [
-        "@babel/proposal-class-properties",
-        "@babel/proposal-object-rest-spread"
-    ]
+  "presets": [
+    "@babel/env",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ],
+  "ignore": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    "src/theme.ts"
+  ]
 }
 

@@ -1,0 +1,32 @@
+---
+name: Button
+---
+
+import { Playground, PropsTable } from 'docz';
+import Button from './';
+
+# Button
+
+<PropsTable of={Button} />
+
+## Basic usage
+
+<Playground>
+    <Button raised={false}>Coucou</Button>
+</Playground>
+
+## Raised
+
+<Playground>
+    <Button raised={true}>Coucou</Button>
+</Playground>
+
+## With some emojis
+
+<Playground>
+    <Button>
+        <span role="img" aria-label="so cool">
+        😀 😎 👍 💯
+        </span>
+    </Button>
+</Playground>

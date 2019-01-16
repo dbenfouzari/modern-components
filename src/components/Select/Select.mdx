@@ -1,0 +1,26 @@
+---
+name: Select
+---
+
+import { Playground, PropsTable } from 'docz';
+import Select from './';
+
+# Select
+
+<PropsTable of={Select} />
+
+## Basic usage
+
+<Playground>
+    <Select
+        options={
+            [
+              { value: 1, label: "One" },
+              { value: 2, label: "Two" },
+              { value: 3, label: "Three" }
+            ]
+        }
+        value={[1]}
+        onChange={(nextValue) => console.log('next value', nextValue)}
+    />
+</Playground>

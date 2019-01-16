@@ -1,0 +1,36 @@
+---
+name: Checkbox
+---
+
+import { Playground, PropsTable } from 'docz';
+import Checkbox from './';
+
+# Button
+
+<PropsTable of={Checkbox} />
+
+## Basic usage
+
+### Unchecked
+
+<Playground>
+    <Checkbox value={false} onChange={nextValue => console.log(nextValue)}>
+        Hello World!
+    </Checkbox>
+</Playground>
+
+### Checked
+
+<Playground>
+    <Checkbox value={true} onChange={nextValue => console.log(nextValue)}>
+        Hello World!
+    </Checkbox>
+</Playground>
+
+### Disabled
+
+<Playground>
+    <Checkbox disabled={true} value={true} onChange={nextValue => console.log(nextValue)}>
+        Hello World!
+    </Checkbox>
+</Playground>

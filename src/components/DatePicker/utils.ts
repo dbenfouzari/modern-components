@@ -24,7 +24,7 @@ export const generateMonth = (month: Date) => {
     .endOf("month")
     .endOf("week");
 
-  const weeksBetween = lastDayOfMonth.diff(firstDayOfMonth, "weeks");
+  const weeksBetween = lastDayOfMonth.diff(firstDayOfMonth, "weeks") + 1;
 
   for (let i = 0; i < weeksBetween; i++) {
     rows.push(

@@ -7,9 +7,10 @@ interface DayProps {
   day: Date;
   onClick: (smth: any) => void;
   dateFormat?: "DD";
+  disabled?: boolean;
 }
 
-const Day = React.memo(({ day, onClick, dateFormat }: DayProps) => {
+const Day = React.memo(({ day, onClick, dateFormat, disabled }: DayProps) => {
   return (
     <CurrentDateContext.Consumer>
       {currentDate => {
@@ -31,6 +32,7 @@ const Day = React.memo(({ day, onClick, dateFormat }: DayProps) => {
             isToday={isToday}
             isCurrent={isCurrent}
             onClick={onClick}
+            disabled={disabled}
           >
             <StyledDay>
               {moment(day.toISOString()).format(dateFormat)}

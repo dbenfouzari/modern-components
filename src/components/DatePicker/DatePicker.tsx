@@ -7,24 +7,35 @@ interface DatePickerProps {
    * The current date
    *
    * @since 0.0.1
-   * @version 0.0.1
    */
   value: Date;
   /**
    * Will be called on date select
    *
    * @since 0.0.1
-   * @version 0.0.1
    */
   onChange: (nextDate: Date) => void;
   /**
    * Calendar alignment
    *
    * @since 0.0.1
-   * @version 0.0.1
    * @default "left"
    */
   alignCalendar?: "left" | "right";
+  /**
+   * The minimum selectable date
+   *
+   * @since 0.0.1
+   * @default undefined
+   */
+  minDate: Date;
+  /**
+   * The maximum selectable date
+   *
+   * @since 0.0.1
+   * @default undefined
+   */
+  maxDate: Date;
 }
 
 interface DatePickerState {
@@ -45,7 +56,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   private datePickerRef = React.createRef<HTMLDivElement>();
 
   public render() {
-    const { value, alignCalendar } = this.props;
+    const { value, alignCalendar, maxDate, minDate } = this.props;
     const { isCalendarShown } = this.state;
 
     return (
@@ -65,6 +76,8 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
             value={value}
             onChange={this.handleChange}
             align={alignCalendar}
+            minDate={minDate}
+            maxDate={maxDate}
           />
         ) : null}
       </div>

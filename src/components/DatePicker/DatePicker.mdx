@@ -27,11 +27,42 @@ import DatePicker from './';
       }
       
       render () {
+        return (
+          <DatePicker
+            value={this.state.value}
+            onChange={this.handleChange}
+            minDate={new Date(2019, 0, 9)}
+          />
+        )
+      }
+    }
+    
+    return <Example />
+  }}
+</Playground>
+
+## Date range
+
+<Playground>
+  {() => {
+    class Example extends React.Component {
+      constructor (props) {
+        this.state = {
+          value: new Date()
+        }
+        
+        this.handleChange = this.handleChange.bind(this);
+      }
+      
+      handleChange(nextDate) {
+        this.setState({ value: nextDate });
+      }
+      
+      render () {
         return <DatePicker value={this.state.value} onChange={this.handleChange} />
       }
     }
     
     return <Example />
   }}
-    
 </Playground>

@@ -9,7 +9,7 @@ import {
 } from "./Select.styles";
 import { mapValueToLabelForOptions } from "./utils";
 
-interface OptionType {
+export interface OptionType {
   value: string | number;
   label: string | number;
 }

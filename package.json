@@ -8,16 +8,15 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch",
-    "build": "rimraf lib && yarn build:types && yarn build:js",
+    "build": "rimraf lib && yarn build:types && yarn build:js && yarn build:doc",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps",
-    "start": "start-storybook -p 9001 -c .storybook",
+    "build:doc": "docz build",
+    "start": "docz dev",
     "test": "jest",
     "lint": "tslint --project tsconfig.lint.json -t codeFrame",
     "prettier": "prettier --config .prettierrc src/**/*.{ts,tsx}",
-    "prettier:write": "yarn prettier --write",
-    "docz:start": "docz dev",
-    "docz:build": "docz build"
+    "prettier:write": "yarn prettier --write"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",

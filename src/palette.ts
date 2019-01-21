@@ -21,5 +21,5 @@ export default {
   clouds: "#ECF0F1",
   silver: "#BDC3C7",
   concrete: "#95A5A6",
-  asbestos: "#7F8C8D"
+  asbestos: "#7F8C8D",
 };

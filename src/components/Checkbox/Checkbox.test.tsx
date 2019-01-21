@@ -15,7 +15,7 @@ describe("Checkbox", () => {
           <Checkbox value={true} onChange={noop}>
             Coucou
           </Checkbox>
-        </ThemeProvider>
+        </ThemeProvider>,
       )
       .toJSON();
 

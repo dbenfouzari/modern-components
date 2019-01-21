@@ -26,7 +26,7 @@ export const CurrentDateContext = React.createContext(new Date());
 
 class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
   public state = {
-    currentDate: new Date(this.props.value)
+    currentDate: new Date(this.props.value),
   };
 
   public render() {
@@ -73,7 +73,7 @@ class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
   public setDate = (nextDate: Date) => {
     if (nextDate.toDateString() !== this.state.currentDate.toDateString()) {
       this.setState({
-        currentDate: nextDate
+        currentDate: nextDate,
       });
     }
   };

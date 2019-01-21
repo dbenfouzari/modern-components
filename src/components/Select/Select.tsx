@@ -5,7 +5,7 @@ import {
   Option,
   OptionsWrapper,
   SelectWrapper,
-  Tag
+  Tag,
 } from "./Select.styles";
 import { mapValueToLabelForOptions } from "./utils";
 
@@ -22,7 +22,7 @@ const KEY_CODES: KeyCodes = {
   BACKSPACE: 8,
   BOTTOM: 40,
   ENTER: 13,
-  UP: 38
+  UP: 38,
 };
 
 interface SelectProps {
@@ -59,12 +59,12 @@ class Select extends React.Component<SelectProps, SelectState> {
   public state = {
     currentInput: "",
     focusedOptionIndex: -1,
-    isOpen: false
+    isOpen: false,
   };
 
   public get notSelectedOptions(): OptionType[] {
     return this.props.options.filter(
-      option => !this.props.value.includes(option.value)
+      option => !this.props.value.includes(option.value),
     );
   }
 
@@ -153,7 +153,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
           this.setState({
             currentInput: "",
-            focusedOptionIndex: -1
+            focusedOptionIndex: -1,
           });
         }
         break;
@@ -215,7 +215,7 @@ class Select extends React.Component<SelectProps, SelectState> {
                   onMouseDown={this.handleOptionSelect(option.value)}
                   isFocused={focusedOptionIndex === optionIndex}
                   dangerouslySetInnerHTML={{
-                    __html: this.mapLabelToSearch(option.label)
+                    __html: this.mapLabelToSearch(option.label),
                   }}
                 />
               ))

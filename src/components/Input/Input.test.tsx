@@ -13,7 +13,7 @@ describe("Input", () => {
       .create(
         <ThemeProvider theme={defaultTheme}>
           <Input value="test" onChange={noop} />
-        </ThemeProvider>
+        </ThemeProvider>,
       )
       .toJSON();
 

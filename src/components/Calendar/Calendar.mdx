@@ -1,0 +1,79 @@
+---
+name: Calendar
+---
+
+import { Playground, PropsTable } from 'docz';
+import Calendar from './';
+
+# Calendar
+
+<PropsTable of={Calendar} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    class Example extends React.Component {
+      constructor (props) {
+        this.state = {
+          value: new Date()
+        }
+        
+        this.handleChange = this.handleChange.bind(this);
+      }
+      
+      handleChange(nextDate) {
+        console.log({ nextDate });
+        this.setState({ value: nextDate });
+      }
+      
+      render () {
+        return (
+          <Calendar
+            value={this.state.value}
+            onChange={this.handleChange}
+            minDate={new Date(2019, 0, 9)}
+          />
+        )
+      }
+    }
+    
+    return <Example />
+  }}
+</Playground>
+
+## Range
+
+<Playground>
+  {() => {
+    class Example extends React.Component {
+      constructor (props) {
+        this.state = {
+          value: {
+            startDate: new Date(),
+            endDate: new Date()
+          }
+        }
+        
+        this.handleChange = this.handleChange.bind(this);
+      }
+      
+      handleChange(nextDate) {
+        console.log({ nextDate });
+        this.setState({ value: nextDate });
+      }
+      
+      render () {
+        return (
+          <Calendar
+            value={this.state.value}
+            onChange={this.handleChange}
+            minDate={new Date(2019, 0, 9)}
+          />
+        )
+      }
+    }
+    
+    return <Example />
+  }}
+</Playground>

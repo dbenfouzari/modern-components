@@ -43,7 +43,7 @@ const NavigationActions = React.memo(
         </span>
       </span>
     </Arrows>
-  )
+  ),
 );
 
 const Navigation = React.memo(
@@ -53,7 +53,7 @@ const Navigation = React.memo(
 
       <NavigationActions {...{ onPrev, onNext, onToday }} />
     </CalendarNavigation>
-  )
+  ),
 );
 
 export default Navigation;

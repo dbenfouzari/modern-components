@@ -50,7 +50,7 @@ interface DatePickerState {
  */
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   public state = {
-    isCalendarShown: false
+    isCalendarShown: false,
   };
 
   private datePickerRef = React.createRef<HTMLDivElement>();

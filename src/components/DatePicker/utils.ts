@@ -38,8 +38,8 @@ export const generateMonth = (month: Date) => {
           .startOf("month")
           .startOf("week")
           .add(i + 1, "week")
-          .toDate()
-      )
+          .toDate(),
+      ),
     );
   }
 

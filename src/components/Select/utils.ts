@@ -1,7 +1,7 @@
 import { OptionType } from "./Select";
 
 export const mapValueToLabelForOptions = (options: OptionType[]) => (
-  value: OptionType["value"]
+  value: OptionType["value"],
 ) => {
   const opt = options.find(option => option.value === value);
 

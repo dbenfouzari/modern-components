@@ -1,6 +1,6 @@
 {
   "name": "@dbenfouzari/modern-components",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Modern components library",
   "main": "lib/index.js",
   "author": "Donovan BENFOUZARI <d.benfouzari@gmail.com>",
@@ -16,7 +16,8 @@
     "test": "jest",
     "lint": "tslint --project tsconfig.lint.json -t codeFrame",
     "prettier": "prettier --config .prettierrc src/**/*.{ts,tsx}",
-    "prettier:write": "yarn prettier --write"
+    "prettier:write": "yarn prettier --write",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -80,5 +81,9 @@
     "moment": "^2.22.2",
     "polished": "^2.3.0",
     "styled-components": "^4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbenfouzari/modern-components.git"
   }
 }

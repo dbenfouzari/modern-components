@@ -61,22 +61,14 @@ workflows:
           requires:
             - prepare
       - build:
+          requires:
+            - prepare
+      - release:
           filters:
             branches:
               only:
                 - master
           requires:
-            - prepare
-      - release:
-          requires:
             - lint
             - build
-  test:
-    jobs:
-      - prepare
-      - lint:
-          requires:
-            - prepare
-      - build:
-          requires:
-            - prepare
+

@@ -50,13 +50,13 @@ class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
           <Wrapper>
             <CalendarHeader />
 
-            <Weeks
+            {/*<Weeks
               weeks={weeks}
               onDaySelect={this.handleDateSelect}
               dateFormat={dateFormat}
               minDate={minDate}
               maxDate={maxDate}
-            />
+            />*/}
           </Wrapper>
         </CalendarContainer>
       </CurrentDateContext.Provider>

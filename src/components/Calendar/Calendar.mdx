@@ -16,14 +16,13 @@ import Calendar from './';
     class Example extends React.Component {
       constructor (props) {
         this.state = {
-          value: new Date()
+          value: new Date(2019, 0, 24)
         }
         
         this.handleChange = this.handleChange.bind(this);
       }
       
       handleChange(nextDate) {
-        console.log({ nextDate });
         this.setState({ value: nextDate });
       }
       
@@ -59,7 +58,6 @@ import Calendar from './';
       }
       
       handleChange(nextDate) {
-        console.log({ nextDate });
         this.setState({ value: nextDate });
       }
 

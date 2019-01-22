@@ -43,6 +43,19 @@ class Calendar<DateType extends DateOrRange> extends React.Component<
   CalendarProps<DateType>,
   CalendarState<DateType>
 > {
+  // public static getDerivedStateFromProps(
+  //   props: CalendarProps<DateOrRange>,
+  //   state: CalendarState<DateOrRange>,
+  // ) {
+  //   if (props.value !== state.selected) {
+  //     return {
+  //       selected: props.value,
+  //     };
+  //   }
+  //
+  //   return null;
+  // }
+
   public state: CalendarState<DateType> = {
     calendarDate: convertDateToYearMonthDay(getFirstDate(this.props.value)),
     hoveredDate: null,
@@ -125,6 +138,8 @@ class Calendar<DateType extends DateOrRange> extends React.Component<
          * so we can just call the `onChange` event with the day
          */
         this.props.onChange(day as DateType);
+
+        this.setState({ selected: day as DateType });
       } else {
         /**
          * If `startDate` is set, we can call `onChange` event with the right data

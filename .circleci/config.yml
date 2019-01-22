@@ -12,29 +12,29 @@ jobs:
       - checkout
       # Download and cache dependencies
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn install
       - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - persist_to_workspace:
-        root: .
-        paths:
-          - node_modules
+          root: .
+          paths:
+            - node_modules
 
   build:
     <<: *defaults
     steps:
       - checkout
       - attach_workspace:
-        at: .
+          at: .
       - run: npm run build
       - persist_to_workspace:
-        root: .
-        paths:
-          - build
+          root: .
+          paths:
+            - build
 
 
   lint:
@@ -42,7 +42,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-         at: .
+          at: .
       - run: yarn lint
 
 workflows:
@@ -51,9 +51,8 @@ workflows:
     jobs:
       - prepare
       - lint:
-        requires:
-          - prepare
-
+          requires:
+            - prepare
       - build:
-        requires:
-          - lint
+          requires:
+            - lint

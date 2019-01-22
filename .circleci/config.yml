@@ -61,7 +61,7 @@ workflows:
             - prepare
       - build:
           requires:
-            - lint
+            - prepare
       - release:
           requires:
             - lint

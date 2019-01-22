@@ -6,10 +6,19 @@ interface WeekProps {
   days: Date[];
   onDaySelect: (nextDay: Date) => void;
   dateFormat?: "DD";
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 const Week = React.memo((props: WeekProps) => {
-  const handleDaySelect = (day: Date) => () => props.onDaySelect(day);
+  const isDayDisabled = (day: Date): boolean => {
+    if (props.minDate && day < props.minDate) return true;
+    if (props.maxDate && day > props.maxDate) return true;
+    return false;
+  };
+  const handleDaySelect = (day: Date) => () => {
+    return isDayDisabled(day) ? null : props.onDaySelect(day);
+  };
 
   return (
     <StyledWeek>
@@ -19,6 +28,7 @@ const Week = React.memo((props: WeekProps) => {
           day={day}
           dateFormat={props.dateFormat}
           onClick={handleDaySelect(day)}
+          disabled={isDayDisabled(day)}
         />
       ))}
     </StyledWeek>

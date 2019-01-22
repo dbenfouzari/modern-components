@@ -1,13 +1,13 @@
 ---
-name: DatePicker
+name: Calendar
 ---
 
 import { Playground, PropsTable } from 'docz';
-import DatePicker from './';
+import Calendar from './';
 
-# DatePicker
+# Calendar
 
-<PropsTable of={DatePicker} />
+<PropsTable of={Calendar} />
 
 ## Basic usage
 
@@ -16,7 +16,7 @@ import DatePicker from './';
     class Example extends React.Component {
       constructor (props) {
         this.state = {
-          value: new Date()
+          value: new Date(2019, 0, 24)
         }
         
         this.handleChange = this.handleChange.bind(this);
@@ -28,7 +28,7 @@ import DatePicker from './';
       
       render () {
         return (
-          <DatePicker
+          <Calendar
             value={this.state.value}
             onChange={this.handleChange}
             minDate={new Date(2019, 0, 9)}
@@ -41,14 +41,17 @@ import DatePicker from './';
   }}
 </Playground>
 
-## Date range
+## Range
 
 <Playground>
   {() => {
     class Example extends React.Component {
       constructor (props) {
         this.state = {
-          value: new Date()
+          value: {
+            startDate: null,
+            endDate: null
+          }
         }
         
         this.handleChange = this.handleChange.bind(this);
@@ -57,9 +60,16 @@ import DatePicker from './';
       handleChange(nextDate) {
         this.setState({ value: nextDate });
       }
-      
+
       render () {
-        return <DatePicker value={this.state.value} onChange={this.handleChange} />
+        return (
+          <Calendar
+            value={this.state.value}
+            onChange={this.handleChange}
+            minDate={new Date(2018, 0, 9)}
+            numberOfMonths={2}
+          />
+        )
       }
     }
     

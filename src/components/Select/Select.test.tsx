@@ -16,7 +16,7 @@ describe("Select", () => {
             onChange={handleChange}
             value={[1]}
           />
-        </ThemeProvider>
+        </ThemeProvider>,
       )
       .toJSON();
 

@@ -6,7 +6,7 @@ export const SelectWrapper = styled.div`
 `;
 
 export const InputWrapper = styled(
-  ({ isOpen, ...rest }: { isOpen: boolean }) => <div {...rest} />
+  ({ isOpen, ...rest }: { isOpen: boolean }) => <div {...rest} />,
 )`
   border-radius: 4px;
   border: 1px solid ${props => props.theme.peterRiver};

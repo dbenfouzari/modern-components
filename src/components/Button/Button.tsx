@@ -45,7 +45,7 @@ export const Button = ({
   children,
   onClick,
   raised = true,
-  type = "button"
+  type = "button",
 }: ButtonProps) => (
   <StyledButton type={type} role="button" raised={raised} onClick={onClick}>
     {children}

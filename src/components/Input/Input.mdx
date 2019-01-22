@@ -12,5 +12,27 @@ import Input from './';
 ## Basic usage
 
 <Playground>
-    <Input value="Hello world" onChange={(nextValue) => console.log(nextValue)} />
+    {() => {
+        class Example extends React.Component {
+            constructor (props) {
+                super(props);
+                this.state = {
+                    value: "Hello World !"
+                }
+                this.handleChange = this.handleChange.bind(this);
+            }
+
+            handleChange(nextValue) {
+                this.setState({ value: nextValue });
+            }
+            
+            render () {
+                return (
+                    <Input value={this.state.value} onChange={this.handleChange} />
+                )
+            }
+        }
+        
+        return <Example />;
+    }}
 </Playground>

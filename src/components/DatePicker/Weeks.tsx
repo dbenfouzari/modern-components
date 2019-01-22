@@ -6,6 +6,8 @@ interface WeekProps {
   weeks: Date[][];
   onDaySelect: (nextDay: Date) => void;
   dateFormat?: "DD";
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 const Weeks = React.memo((props: WeekProps) => {
@@ -17,6 +19,8 @@ const Weeks = React.memo((props: WeekProps) => {
           days={days}
           onDaySelect={props.onDaySelect}
           dateFormat={props.dateFormat}
+          minDate={props.minDate}
+          maxDate={props.maxDate}
         />
       ))}
     </CalendarContent>

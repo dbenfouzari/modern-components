@@ -5,7 +5,7 @@ import {
   Option,
   OptionsWrapper,
   SelectWrapper,
-  Tag
+  Tag,
 } from "./Select.styles";
 import { mapValueToLabelForOptions } from "./utils";
 
@@ -22,7 +22,7 @@ const KEY_CODES: KeyCodes = {
   BACKSPACE: 8,
   BOTTOM: 40,
   ENTER: 13,
-  UP: 38
+  UP: 38,
 };
 
 interface SelectProps {
@@ -49,63 +49,50 @@ interface SelectProps {
   options: OptionType[];
 }
 
-/**
- * It's (actually) a select where you can select multiple options
- */
-const Select = (props: SelectProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [focusedOptionIndex, setFocusedOptionIndex] = React.useState(-1);
-  const [currentInput, setCurrentInput] = React.useState("");
+interface SelectState {
+  currentInput: string;
+  focusedOptionIndex: number;
+  isOpen: boolean;
+}
 
-  const onFocus = () => {
-    setIsOpen(true);
-  };
-  const onBlur = () => {
-    setIsOpen(false);
+class Select extends React.Component<SelectProps, SelectState> {
+  public state = {
+    currentInput: "",
+    focusedOptionIndex: -1,
+    isOpen: false,
   };
 
-  const mapValueToLabel = mapValueToLabelForOptions(props.options);
+  public get notSelectedOptions(): OptionType[] {
+    return this.props.options.filter(
+      option => !this.props.value.includes(option.value),
+    );
+  }
 
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentInput(event.currentTarget.value);
-  };
+  public get valueFilteredOptions(): OptionType[] {
+    return this.notSelectedOptions.filter(option => {
+      const regex = new RegExp(this.state.currentInput, "gi");
+      return regex.test(option.label.toString());
+    });
+  }
 
-  const onOptionSelect = (optionId: OptionType["value"]) => () => {
-    const nextValue = [...props.value];
-    nextValue.push(optionId);
-    props.onChange(nextValue);
-  };
-
-  const onOptionRemove = (optionId: OptionType["value"]) => () => {
-    const nextValue = [...props.value];
-    const optionIndex = props.value.findIndex(val => val === optionId);
+  public onOptionRemove = (optionId: OptionType["value"]) => () => {
+    const nextValue = [...this.props.value];
+    const optionIndex = this.props.value.findIndex(val => val === optionId);
 
     nextValue.splice(optionIndex, 1);
 
-    props.onChange(nextValue as any);
+    this.props.onChange(nextValue as any);
   };
 
-  const notSelectedOptions: OptionType[] = props.options.filter(
-    option => !props.value.includes(option.value)
-  );
-
-  const valueFilteredOptions: OptionType[] = notSelectedOptions.filter(
-    option => {
-      const regex = new RegExp(currentInput, "gi");
-      return regex.test(option.label.toString());
-    }
-  );
-
-  const mapLabelToSearch = (label: OptionType["label"]) => {
-    if (currentInput) {
-      const regex = new RegExp(`(${currentInput})`, "gi");
-      return label.toString().replace(regex, "<b>$1</b>");
-    }
-
-    return label.toString();
+  public handleFocus = () => {
+    this.setState({ isOpen: true });
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  public handleBlur = () => {
+    this.setState({ isOpen: false });
+  };
+
+  public handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     switch (event.keyCode) {
       case KEY_CODES.BACKSPACE:
         if (event.currentTarget.value !== "") {
@@ -114,56 +101,60 @@ const Select = (props: SelectProps) => {
 
         // Backspace pressed, but no value in the input.
         // So we should remove tag
-        if (props.value.length) {
-          const nextValue = [...props.value];
+        if (this.props.value.length) {
+          const nextValue = [...this.props.value];
           nextValue.pop();
-          props.onChange(nextValue);
+          this.props.onChange(nextValue);
         }
         break;
 
       case KEY_CODES.BOTTOM:
         event.preventDefault();
-        if (valueFilteredOptions.length) {
-          const targetIndex = focusedOptionIndex + 1;
+        if (this.valueFilteredOptions.length) {
+          const targetIndex = this.state.focusedOptionIndex + 1;
           let target;
 
-          if (valueFilteredOptions.length - 1 >= targetIndex) {
+          if (this.valueFilteredOptions.length - 1 >= targetIndex) {
             target = targetIndex;
           } else {
             target = 0;
           }
 
-          setFocusedOptionIndex(target);
+          this.setState({ focusedOptionIndex: target });
         }
         break;
 
       case KEY_CODES.UP:
         event.preventDefault();
-        if (valueFilteredOptions.length) {
-          const targetIndex = focusedOptionIndex - 1;
+        if (this.valueFilteredOptions.length) {
+          const targetIndex = this.state.focusedOptionIndex - 1;
           let target;
 
           if (targetIndex < 0) {
-            target = valueFilteredOptions.length - 1;
-          } else if (valueFilteredOptions.length - 1 >= targetIndex) {
+            target = this.valueFilteredOptions.length - 1;
+          } else if (this.valueFilteredOptions.length - 1 >= targetIndex) {
             target = targetIndex;
           } else {
             target = targetIndex;
           }
 
-          setFocusedOptionIndex(target);
+          this.setState({ focusedOptionIndex: target });
         }
         break;
 
       case KEY_CODES.ENTER:
         event.preventDefault();
-        if (focusedOptionIndex > -1) {
-          const focusedOptionValue =
-            valueFilteredOptions[focusedOptionIndex].value;
-          const nextValue = [...props.value, focusedOptionValue];
-          props.onChange(nextValue);
-          setFocusedOptionIndex(-1);
-          setCurrentInput("");
+        if (this.state.focusedOptionIndex > -1) {
+          const focusedOptionValue = this.valueFilteredOptions[
+            this.state.focusedOptionIndex
+          ].value;
+          const nextValue = [...this.props.value, focusedOptionValue];
+          this.props.onChange(nextValue);
+
+          this.setState({
+            currentInput: "",
+            focusedOptionIndex: -1,
+          });
         }
         break;
 
@@ -172,45 +163,70 @@ const Select = (props: SelectProps) => {
     }
   };
 
-  return (
-    <SelectWrapper>
-      <InputWrapper isOpen={isOpen}>
-        {props.value.map(value => (
-          <Tag key={value}>
-            {mapValueToLabel(value)}
-            <span onClick={onOptionRemove(value)}>&times;</span>
-          </Tag>
-        ))}
+  public mapLabelToSearch = (label: OptionType["label"]) => {
+    if (this.state.currentInput) {
+      const regex = new RegExp(`(${this.state.currentInput})`, "gi");
+      return label.toString().replace(regex, "<b>$1</b>");
+    }
 
-        <Input
-          value={currentInput}
-          onChange={onInputChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onKeyDown={handleKeyDown}
-        />
-      </InputWrapper>
+    return label.toString();
+  };
 
-      {isOpen ? (
-        <OptionsWrapper>
-          {valueFilteredOptions.length > 0 ? (
-            valueFilteredOptions.map((option, optionIndex) => (
-              <Option
-                key={option.value}
-                onMouseDown={onOptionSelect(option.value)}
-                isFocused={focusedOptionIndex === optionIndex}
-                dangerouslySetInnerHTML={{
-                  __html: mapLabelToSearch(option.label)
-                }}
-              />
-            ))
-          ) : (
-            <Option>No result</Option>
-          )}
-        </OptionsWrapper>
-      ) : null}
-    </SelectWrapper>
-  );
-};
+  public handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ currentInput: event.currentTarget.value });
+  };
+
+  public handleOptionSelect = (optionId: OptionType["value"]) => () => {
+    const nextValue = [...this.props.value];
+    nextValue.push(optionId);
+    this.props.onChange(nextValue);
+  };
+
+  public render() {
+    const { isOpen, currentInput, focusedOptionIndex } = this.state;
+
+    const mapValueToLabel = mapValueToLabelForOptions(this.props.options);
+
+    return (
+      <SelectWrapper>
+        <InputWrapper isOpen={isOpen}>
+          {this.props.value.map(value => (
+            <Tag key={value}>
+              {mapValueToLabel(value)}
+              <span onClick={this.onOptionRemove(value)}>&times;</span>
+            </Tag>
+          ))}
+
+          <Input
+            value={currentInput}
+            onChange={this.handleInputChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyDown={this.handleKeyDown}
+          />
+        </InputWrapper>
+
+        {isOpen ? (
+          <OptionsWrapper>
+            {this.valueFilteredOptions.length > 0 ? (
+              this.valueFilteredOptions.map((option, optionIndex) => (
+                <Option
+                  key={option.value}
+                  onMouseDown={this.handleOptionSelect(option.value)}
+                  isFocused={focusedOptionIndex === optionIndex}
+                  dangerouslySetInnerHTML={{
+                    __html: this.mapLabelToSearch(option.label),
+                  }}
+                />
+              ))
+            ) : (
+              <Option>No result</Option>
+            )}
+          </OptionsWrapper>
+        ) : null}
+      </SelectWrapper>
+    );
+  }
+}
 
 export default Select;

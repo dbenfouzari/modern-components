@@ -65,6 +65,7 @@ export const Cell = styled.div<{
   isToday?: boolean;
   isCurrentMonth?: boolean;
   isCurrent?: boolean;
+  disabled?: boolean;
 }>`
   cursor: default;
   display: table-cell;
@@ -82,6 +83,20 @@ export const Cell = styled.div<{
     !props.isCurrentMonth
       ? css`
           color: ${props.theme.asbestos};
+        `
+      : null}
+  
+  ${props =>
+    props.disabled
+      ? css`
+          color: ${props.theme.silver};
+          font-weight: bold;
+
+          &:hover {
+            ${Day} {
+              background-color: inherit;
+            }
+          }
         `
       : null}
 
@@ -136,6 +151,7 @@ export const CalendarNavigation = styled.div`
 
 export const SelectedMonth = styled.span`
   flex: 1;
+  font-size: 16px;
 `;
 
 export const Arrows = styled.div`

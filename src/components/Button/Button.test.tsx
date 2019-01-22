@@ -11,7 +11,7 @@ describe("Button", () => {
       .create(
         <ThemeProvider theme={defaultTheme}>
           <Button>Hello World!</Button>
-        </ThemeProvider>
+        </ThemeProvider>,
       )
       .toJSON();
 
@@ -23,7 +23,7 @@ describe("Button", () => {
       .create(
         <ThemeProvider theme={defaultTheme}>
           <Button raised={true}>Hello World!</Button>
-        </ThemeProvider>
+        </ThemeProvider>,
       )
       .toJSON();
 

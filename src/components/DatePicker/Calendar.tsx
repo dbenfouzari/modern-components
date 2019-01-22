@@ -14,6 +14,8 @@ interface CalendarProps {
   onChange: (nextDate: Date) => void;
   dateFormat?: DateFormat;
   align?: "left" | "right";
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 interface CalendarState {
@@ -24,11 +26,11 @@ export const CurrentDateContext = React.createContext(new Date());
 
 class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
   public state = {
-    currentDate: new Date(this.props.value)
+    currentDate: new Date(this.props.value),
   };
 
   public render() {
-    const { dateFormat = "DD", align } = this.props;
+    const { dateFormat = "DD", align, maxDate, minDate } = this.props;
     const { currentDate } = this.state;
 
     const weeks = generateMonth(currentDate);
@@ -48,11 +50,13 @@ class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
           <Wrapper>
             <CalendarHeader />
 
-            <Weeks
+            {/*<Weeks
               weeks={weeks}
               onDaySelect={this.handleDateSelect}
               dateFormat={dateFormat}
-            />
+              minDate={minDate}
+              maxDate={maxDate}
+            />*/}
           </Wrapper>
         </CalendarContainer>
       </CurrentDateContext.Provider>
@@ -69,7 +73,7 @@ class Calendar extends React.PureComponent<CalendarProps, CalendarState> {
   public setDate = (nextDate: Date) => {
     if (nextDate.toDateString() !== this.state.currentDate.toDateString()) {
       this.setState({
-        currentDate: nextDate
+        currentDate: nextDate,
       });
     }
   };

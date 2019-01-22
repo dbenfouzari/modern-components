@@ -1,23 +1,27 @@
 import * as React from "react";
 import CalendarWrapper from "./CalendarWrapper";
 import InnerCalendar from "./InnerCalendar";
+import { CalendarValueContext, ValueContext } from "./utils";
 
 export interface DateRange {
   startDate: Date | null;
   endDate: Date | null;
 }
 
-interface CalendarProps<DateType extends Date | DateRange> {
+export type DateOrRange = Date | DateRange;
+
+interface CalendarProps<DateType extends DateOrRange> {
   value: DateType;
   onChange?: (nextDate: DateType) => void;
   numberOfMonths?: 1 | 2 | 3;
 }
 
-interface CalendarState<DateType extends Date | DateRange> {
+interface CalendarState<DateType extends DateOrRange> {
   calendarDate: Date;
   today: Date;
-  selected: DateType | null;
+  selected: DateType;
   isSelectingRange: boolean;
+  hoveredDate: Date | null;
 }
 
 const convertDateToYearMonthDay = (date: Date): Date => {
@@ -30,12 +34,18 @@ const convertDateToYearMonthDay = (date: Date): Date => {
   return nextDate;
 };
 
-class Calendar<DateType extends Date | DateRange> extends React.Component<
+const getFirstDate = (date: DateOrRange): Date => {
+  if (date instanceof Date) return date;
+  return date.startDate || new Date();
+};
+
+class Calendar<DateType extends DateOrRange> extends React.Component<
   CalendarProps<DateType>,
   CalendarState<DateType>
 > {
   public state: CalendarState<DateType> = {
-    calendarDate: convertDateToYearMonthDay(new Date()),
+    calendarDate: convertDateToYearMonthDay(getFirstDate(this.props.value)),
+    hoveredDate: null,
     isSelectingRange: false,
     selected: this.props.value,
     today: new Date(),
@@ -43,19 +53,68 @@ class Calendar<DateType extends Date | DateRange> extends React.Component<
 
   public render() {
     const { numberOfMonths = 1 } = this.props;
+
+    const renderInner = () => {
+      const elms = [];
+
+      for (let i = 0; i < numberOfMonths; i++) {
+        const nextDate: Date = new Date(this.state.calendarDate);
+        nextDate.setMonth(nextDate.getMonth() + i);
+
+        elms.push(
+          <InnerCalendar
+            key={`inner-calendar-${i}`}
+            calendarDate={nextDate}
+            onDayClick={this.handleDayClick}
+            hoveredDate={this.state.hoveredDate}
+            onDayHover={this.handleMouseEnter}
+            onDayLeave={this.handleMouseLeave}
+          />,
+        );
+      }
+
+      return elms;
+    };
+
     return (
-      <CalendarWrapper>{this.renderInner(numberOfMonths)}</CalendarWrapper>
+      <ValueContext.Provider value={this.state.selected}>
+        <CalendarValueContext.Provider value={this.state.calendarDate}>
+          <CalendarWrapper
+            onPrevClick={this.handlePrevMonth}
+            onNextClick={this.handleNextMonth}
+            numberOfMonths={numberOfMonths}
+          >
+            {renderInner()}
+          </CalendarWrapper>
+        </CalendarValueContext.Provider>
+      </ValueContext.Provider>
     );
   }
 
-  public renderInner = (nb: number) => {
-    const components = [];
+  public handleMouseEnter = (day: Date) => () => {
+    this.setState({ hoveredDate: day });
+  };
 
-    for (let i = 0; i < nb; i++) {
-      components.push(<InnerCalendar key={`inner-calendar-${i}`} />);
-    }
+  public handleMouseLeave = () => {
+    this.setState({ hoveredDate: null });
+  };
 
-    return components;
+  public handlePrevMonth = () => {
+    const nextDate = new Date(this.state.calendarDate);
+    nextDate.setMonth(nextDate.getMonth() - 1);
+
+    this.setState({
+      calendarDate: nextDate,
+    });
+  };
+
+  public handleNextMonth = () => {
+    const nextDate = new Date(this.state.calendarDate);
+    nextDate.setMonth(nextDate.getMonth() + 1);
+
+    this.setState({
+      calendarDate: nextDate,
+    });
   };
 
   public handleDayClick = (day: Date) => () => {

@@ -50,8 +50,8 @@ import Calendar from './';
       constructor (props) {
         this.state = {
           value: {
-            startDate: new Date(),
-            endDate: new Date()
+            startDate: null,
+            endDate: null
           }
         }
         
@@ -62,13 +62,14 @@ import Calendar from './';
         console.log({ nextDate });
         this.setState({ value: nextDate });
       }
-      
+
       render () {
         return (
           <Calendar
             value={this.state.value}
             onChange={this.handleChange}
-            minDate={new Date(2019, 0, 9)}
+            minDate={new Date(2018, 0, 9)}
+            numberOfMonths={2}
           />
         )
       }

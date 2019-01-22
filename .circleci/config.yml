@@ -26,6 +26,9 @@ jobs:
 
   build:
     <<: *defaults
+    branches:
+      only:
+        - master
     steps:
       - checkout
       - attach_workspace:

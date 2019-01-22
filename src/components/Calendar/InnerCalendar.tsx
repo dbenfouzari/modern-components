@@ -108,22 +108,28 @@ class InnerCalendar extends React.PureComponent<InnerCalendarProps> {
 
             return getMonth(new Date(calendarDate)).map((week, weekIndex) => (
               <div key={weekIndex} style={{ display: "table-row" }}>
-                {week.map((day, dayIndex) => (
-                  <Cell key={dayIndex}>
-                    {day ? (
-                      <StyledDay
-                        isToday={getIsToday(day)}
-                        isSelected={getIsSelected(day)}
-                        isBetween={getIsBetween(day)}
-                        onClick={onDayClick(day)}
-                        onMouseEnter={onDayHover(day)}
-                        onMouseLeave={onDayLeave}
-                      >
-                        {dayFormat(day)}
-                      </StyledDay>
-                    ) : null}
-                  </Cell>
-                ))}
+                {week.map((day, dayIndex) => {
+                  const extraProps = day
+                    ? {
+                        isBetween: getIsBetween(day),
+                        isSelected: getIsSelected(day),
+                        isToday: getIsToday(day),
+                      }
+                    : {};
+                  return (
+                    <Cell key={dayIndex} {...extraProps}>
+                      {day ? (
+                        <StyledDay
+                          onClick={onDayClick(day)}
+                          onMouseEnter={onDayHover(day)}
+                          onMouseLeave={onDayLeave}
+                        >
+                          {dayFormat(day)}
+                        </StyledDay>
+                      ) : null}
+                    </Cell>
+                  );
+                })}
               </div>
             ));
           }}

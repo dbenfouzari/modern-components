@@ -1,57 +1,58 @@
 import styled, { css } from "../../styled-components";
 
-export const Day = styled.span<{
-  isToday?: boolean;
-  isSelected?: boolean;
-  isBetween: boolean;
-}>`
+export const Day = styled.span`
   align-items: center;
   background-color: transparent;
-  border-radius: 50%;
   box-sizing: border-box;
   display: inline-flex;
   height: 24px;
   justify-content: center;
   transition: background-color 0.3s, color 0.3s;
-  width: 24px;
-
-  ${props =>
-    props.isToday
-      ? css`
-          background-color: #ababab;
-          color: #fff;
-        `
-      : null}
-
-  ${props =>
-    props.isSelected
-      ? css`
-          background-color: #ccc;
-          border: 1px solid #999;
-        `
-      : null}
-
-  ${props =>
-    props.isBetween
-      ? css`
-          border: 1px solid #bbb;
-        `
-      : null}
+  width: 100%;
 `;
 
-export const Cell = styled.div<{ secondary?: boolean }>`
+export const Cell = styled.div<{
+  secondary?: boolean;
+  isToday?: boolean;
+  isSelected?: boolean;
+  isBetween?: boolean;
+}>`
   cursor: default;
   display: table-cell;
-  font-size: 12px;
+  font-size: 0.85em;
   text-align: center;
   vertical-align: middle;
 
   &:hover {
     ${Day} {
       background-color: ${props => props.theme.clouds};
-      color: inherit;
+      color: ${props => props.theme.wetAsphalt};
     }
   }
+
+  ${props =>
+    props.isToday
+      ? css`
+          color: ${props.theme.peterRiver};
+        `
+      : null}
+
+  ${props =>
+    props.isSelected
+      ? css`
+          background-color: ${props.theme.peterRiver};
+          color: #fff;
+        `
+      : null}
+
+  ${props =>
+    props.isBetween
+      ? css`
+          background-color: ${props.theme.peterRiver};
+          color: #fff;
+          opacity: 0.8;
+        `
+      : null}
 
   ${props =>
     props.secondary

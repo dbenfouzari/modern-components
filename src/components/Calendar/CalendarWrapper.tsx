@@ -24,6 +24,8 @@ const CalendarWrapper = ({
       boxShadow: "2px 2px 6px rgba(150, 150, 150, 0.2)",
       display: "flex",
       flexDirection: "column",
+      fontSize: "16px",
+      maxWidth: numberOfMonths * 170 + (numberOfMonths - 1) * 20,
       minWidth: numberOfMonths * 170 + (numberOfMonths - 1) * 20,
       padding: 10,
     }}

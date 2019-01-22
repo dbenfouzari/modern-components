@@ -55,9 +55,10 @@ workflows:
   version: 2
 
   build_and_deploy:
-    branches:
-      only:
-        - master
+    filters:
+      branches:
+        only:
+          - master
 
     jobs:
       - prepare

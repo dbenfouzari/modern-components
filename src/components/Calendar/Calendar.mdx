@@ -28,11 +28,14 @@ import Calendar from './';
       
       render () {
         return (
-          <Calendar
-            value={this.state.value}
-            onChange={this.handleChange}
-            minDate={new Date(2019, 0, 9)}
-          />
+          <React.Fragment>
+            <span>Value : {this.state.value.toLocaleDateString()}</span>
+            <Calendar
+              value={this.state.value}
+              onChange={this.handleChange}
+              minDate={new Date(2019, 0, 9)}
+            />
+          </React.Fragment>
         )
       }
     }
@@ -62,13 +65,22 @@ import Calendar from './';
       }
 
       render () {
+        const { value: { startDate, endDate } } = this.state;
+        
+        const startString = startDate ? startDate.toLocaleDateString() : '-';
+        const endString = endDate ? endDate.toLocaleDateString() : '-';
+
         return (
-          <Calendar
-            value={this.state.value}
-            onChange={this.handleChange}
-            minDate={new Date(2018, 0, 9)}
-            numberOfMonths={2}
-          />
+          <React.Fragment>
+            <div>start date : {startString}</div>
+            <div>end date : {endString}</div>
+            <Calendar
+              value={this.state.value}
+              onChange={this.handleChange}
+              minDate={new Date(2018, 0, 9)}
+              numberOfMonths={2}
+            />
+          </React.Fragment>
         )
       }
     }

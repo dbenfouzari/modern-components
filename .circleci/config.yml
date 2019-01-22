@@ -26,9 +26,6 @@ jobs:
 
   build:
     <<: *defaults
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - attach_workspace:
@@ -56,7 +53,12 @@ jobs:
 
 workflows:
   version: 2
-  build_accept_deploy:
+
+  build_and_deploy:
+    branches:
+      only:
+        - master
+
     jobs:
       - prepare
       - lint:
@@ -69,3 +71,12 @@ workflows:
           requires:
             - lint
             - build
+  test:
+    jobs:
+      - prepare
+      - lint:
+          requires:
+            - prepare
+      - build:
+          requires:
+            - prepare

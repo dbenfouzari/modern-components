@@ -33,14 +33,14 @@ export const Cell = styled.div<{
   ${props =>
     props.isToday
       ? css`
-          color: ${props.theme.peterRiver};
+          color: ${props.theme.primaryLighter};
         `
       : null}
 
   ${props =>
     props.isSelected
       ? css`
-          background-color: ${props.theme.peterRiver};
+          background-color: ${props.theme.primaryLighter};
           color: #fff;
         `
       : null}
@@ -48,7 +48,7 @@ export const Cell = styled.div<{
   ${props =>
     props.isBetween
       ? css`
-          background-color: ${props.theme.peterRiver};
+          background-color: ${props.theme.primaryLighter};
           color: #fff;
           opacity: 0.8;
         `

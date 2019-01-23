@@ -27,7 +27,7 @@ export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
       top: 2px;
       width: 17px;
       height: 17px;
-      border: 1px solid ${props => props.theme.peterRiver};
+      border: 1px solid ${props => props.theme.primaryLighter};
       border-radius: 3px;
     }
 
@@ -37,7 +37,7 @@ export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
       top: -3px;
       left: 4px;
       font-size: 19px;
-      color: ${props => props.theme.peterRiver};
+      color: ${props => props.theme.primaryLighter};
       transition: all 0.2s ease;
     }
   }

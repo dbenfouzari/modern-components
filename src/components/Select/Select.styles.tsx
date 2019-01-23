@@ -9,7 +9,7 @@ export const InputWrapper = styled(
   ({ isOpen, ...rest }: { isOpen: boolean }) => <div {...rest} />,
 )`
   border-radius: 4px;
-  border: 1px solid ${props => props.theme.peterRiver};
+  border: 1px solid ${props => props.theme.primaryLighter};
   display: flex;
   padding: 5px;
 
@@ -29,9 +29,9 @@ export const Input = styled.input`
 `;
 
 export const Tag = styled.span`
-  background-color: ${props => props.theme.peterRiver};
+  background-color: ${props => props.theme.primaryLighter};
   border-radius: 2px;
-  border: 1px solid ${props => props.theme.peterRiver};
+  border: 1px solid ${props => props.theme.primaryLighter};
   font-size: 0.8em;
   padding: 2px 15px 2px 2px;
   position: relative;
@@ -54,7 +54,7 @@ export const Tag = styled.span`
 export const OptionsWrapper = styled.ul`
   background-color: #fff;
   border-radius: 0 0 4px 4px;
-  border: 1px solid ${props => props.theme.peterRiver};
+  border: 1px solid ${props => props.theme.primaryLighter};
   border-top: none;
   box-sizing: border-box;
   list-style: none;
@@ -72,7 +72,7 @@ export const Option = styled.li<{ isFocused?: boolean }>`
   ${props =>
     props.isFocused
       ? css`
-          background-color: ${props.theme.peterRiver};
+          background-color: ${props.theme.primaryLighter};
         `
       : null}
 
@@ -80,7 +80,7 @@ export const Option = styled.li<{ isFocused?: boolean }>`
     props.onMouseDown
       ? css`
           &:hover {
-            background-color: ${props.theme.peterRiver};
+            background-color: ${props.theme.primaryLighter};
           }
         `
       : null}

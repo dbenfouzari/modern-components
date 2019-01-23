@@ -104,7 +104,7 @@ export const Cell = styled.div<{
     props.isToday
       ? css`
           ${Day} {
-            background-color: ${props.theme.belizeHole};
+            background-color: ${props.theme.primary};
             color: #fff;
           }
         `
@@ -114,7 +114,7 @@ export const Cell = styled.div<{
     props.isCurrent
       ? css`
           ${Day} {
-            background-color: ${props.theme.peterRiver};
+            background-color: ${props.theme.primaryLighter};
             color: #fff;
           }
         `

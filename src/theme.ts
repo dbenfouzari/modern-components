@@ -1,4 +1,4 @@
-import palette from "./palette";
+import palette, { theme } from "./palette";
 
 export type PaletteInterface = typeof palette;
 export interface ThemeInterface extends PaletteInterface {
@@ -6,10 +6,4 @@ export interface ThemeInterface extends PaletteInterface {
   primaryLighter: string;
 }
 
-const defaultTheme: ThemeInterface = {
-  ...palette,
-  primary: palette.belizeHole,
-  primaryLighter: palette.peterRiver,
-};
-
-export default defaultTheme;
+export default theme;

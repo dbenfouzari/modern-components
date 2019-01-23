@@ -16,6 +16,7 @@ export const Cell = styled.div<{
   isToday?: boolean;
   isSelected?: boolean;
   isBetween?: boolean;
+  isDisabled?: boolean;
 }>`
   cursor: default;
   display: table-cell;
@@ -36,6 +37,20 @@ export const Cell = styled.div<{
           color: ${props.theme.primaryLighter};
         `
       : null}
+  
+    ${props =>
+      props.isDisabled
+        ? css`
+            color: ${props.theme.concrete};
+
+            &:hover {
+              ${Day} {
+                background-color: inherit;
+                color: inherit;
+              }
+            }
+          `
+        : null}
 
   ${props =>
     props.isSelected

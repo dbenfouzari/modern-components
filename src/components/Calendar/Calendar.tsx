@@ -14,6 +14,8 @@ interface CalendarProps<DateType extends DateOrRange> {
   value: DateType;
   onChange?: (nextDate: DateType) => void;
   numberOfMonths?: 1 | 2 | 3;
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 interface CalendarState<DateType extends DateOrRange> {
@@ -43,19 +45,6 @@ class Calendar<DateType extends DateOrRange> extends React.Component<
   CalendarProps<DateType>,
   CalendarState<DateType>
 > {
-  // public static getDerivedStateFromProps(
-  //   props: CalendarProps<DateOrRange>,
-  //   state: CalendarState<DateOrRange>,
-  // ) {
-  //   if (props.value !== state.selected) {
-  //     return {
-  //       selected: props.value,
-  //     };
-  //   }
-  //
-  //   return null;
-  // }
-
   public state: CalendarState<DateType> = {
     calendarDate: convertDateToYearMonthDay(getFirstDate(this.props.value)),
     hoveredDate: null,
@@ -65,7 +54,7 @@ class Calendar<DateType extends DateOrRange> extends React.Component<
   };
 
   public render() {
-    const { numberOfMonths = 1 } = this.props;
+    const { numberOfMonths = 1, minDate, maxDate } = this.props;
 
     const renderInner = () => {
       const elms = [];
@@ -82,6 +71,8 @@ class Calendar<DateType extends DateOrRange> extends React.Component<
             hoveredDate={this.state.hoveredDate}
             onDayHover={this.handleMouseEnter}
             onDayLeave={this.handleMouseLeave}
+            minDate={minDate}
+            maxDate={maxDate}
           />,
         );
       }
@@ -105,7 +96,15 @@ class Calendar<DateType extends DateOrRange> extends React.Component<
   }
 
   public handleMouseEnter = (day: Date) => () => {
-    this.setState({ hoveredDate: day });
+    const { maxDate } = this.props;
+
+    const selectedDay: Date = maxDate
+      ? maxDate.getTime() > day.getTime()
+        ? day
+        : maxDate
+      : day;
+
+    this.setState({ hoveredDate: selectedDay });
   };
 
   public handleMouseLeave = () => {

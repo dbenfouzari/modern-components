@@ -1,7 +1,7 @@
 // tslint:disable:object-literal-sort-keys
 
 // @see http://www.bootcss.com/p/flat-ui/
-export default {
+export const palette = {
   turquoise: "#1ABC9C",
   greenSea: "#16A085",
   emerald: "#2ECC71",
@@ -23,3 +23,11 @@ export default {
   concrete: "#95A5A6",
   asbestos: "#7F8C8D",
 };
+
+export const theme = {
+  ...palette,
+  primary: palette.belizeHole,
+  primaryLighter: palette.peterRiver,
+};
+
+export default palette;

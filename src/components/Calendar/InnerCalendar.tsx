@@ -25,6 +25,8 @@ interface InnerCalendarProps {
   hoveredDate: Date | null;
   onDayHover: (day: Date) => (event: React.MouseEvent<HTMLSpanElement>) => void;
   onDayLeave: () => void;
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 const HeaderDays = () => (
@@ -58,6 +60,8 @@ class InnerCalendar extends React.PureComponent<InnerCalendarProps> {
       hoveredDate,
       onDayHover,
       onDayLeave,
+      minDate,
+      maxDate,
     } = this.props;
 
     return (
@@ -106,21 +110,40 @@ class InnerCalendar extends React.PureComponent<InnerCalendarProps> {
               return false;
             };
 
+            const getIsDisabled = (day: Date): boolean => {
+              if (minDate && day.getTime() < minDate.getTime()) {
+                return true;
+              }
+              if (maxDate && day.getTime() > maxDate.getTime()) {
+                return true;
+              }
+              return false;
+            };
+
             return getMonth(new Date(calendarDate)).map((week, weekIndex) => (
               <div key={weekIndex} style={{ display: "table-row" }}>
                 {week.map((day, dayIndex) => {
                   const extraProps = day
                     ? {
                         isBetween: getIsBetween(day),
+                        isDisabled: getIsDisabled(day),
                         isSelected: getIsSelected(day),
                         isToday: getIsToday(day),
                       }
                     : {};
+
+                  const handleClick = (targetDay: Date) => (
+                    event: React.MouseEvent<HTMLSpanElement>,
+                  ) => {
+                    if (extraProps.isDisabled) return null;
+                    onDayClick(targetDay)(event);
+                  };
+
                   return (
                     <Cell key={dayIndex} {...extraProps}>
                       {day ? (
                         <StyledDay
-                          onClick={onDayClick(day)}
+                          onClick={handleClick(day)}
                           onMouseEnter={onDayHover(day)}
                           onMouseLeave={onDayLeave}
                         >

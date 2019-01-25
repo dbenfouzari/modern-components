@@ -22,6 +22,8 @@ const KEY_CODES: KeyCodes = {
   BACKSPACE: 8,
   BOTTOM: 40,
   ENTER: 13,
+  LEFT: 37,
+  RIGHT: 39,
   UP: 38,
 };
 
@@ -53,12 +55,14 @@ interface SelectState {
   currentInput: string;
   focusedOptionIndex: number;
   isOpen: boolean;
+  highlightedTagIndex: number | null;
 }
 
 class Select extends React.Component<SelectProps, SelectState> {
   public state = {
     currentInput: "",
     focusedOptionIndex: -1,
+    highlightedTagIndex: null,
     isOpen: false,
   };
 
@@ -99,12 +103,19 @@ class Select extends React.Component<SelectProps, SelectState> {
           return;
         }
 
-        // Backspace pressed, but no value in the input.
-        // So we should remove tag
-        if (this.props.value.length) {
+        if (this.state.highlightedTagIndex !== null) {
+          this.setState({ highlightedTagIndex: null });
           const nextValue = [...this.props.value];
           nextValue.pop();
           this.props.onChange(nextValue);
+          return;
+        }
+
+        // Backspace pressed, but no value in the input.
+        // So we should remove tag
+        if (this.props.value.length) {
+          const index = this.props.value.length - 1;
+          this.setState({ highlightedTagIndex: index });
         }
         break;
 
@@ -183,15 +194,20 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   public render() {
-    const { isOpen, currentInput, focusedOptionIndex } = this.state;
+    const {
+      isOpen,
+      currentInput,
+      focusedOptionIndex,
+      highlightedTagIndex,
+    } = this.state;
 
     const mapValueToLabel = mapValueToLabelForOptions(this.props.options);
 
     return (
       <SelectWrapper>
         <InputWrapper isOpen={isOpen}>
-          {this.props.value.map(value => (
-            <Tag key={value}>
+          {this.props.value.map((value, tagIndex) => (
+            <Tag key={value} isHighlighted={highlightedTagIndex === tagIndex}>
               {mapValueToLabel(value)}
               <span onClick={this.onOptionRemove(value)}>&times;</span>
             </Tag>

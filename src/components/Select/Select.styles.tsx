@@ -1,9 +1,16 @@
+import chroma from "chroma-js";
 import * as React from "react";
 import styled, { css } from "../../styled-components";
+import { ThemeInterface } from "../../theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
 `;
+
+const getLightenColor = (props: { theme: ThemeInterface }) =>
+  chroma(props.theme.primaryLighter)
+    .alpha(0.4)
+    .hex();
 
 export const InputWrapper = styled(
   ({ isOpen, ...rest }: { isOpen: boolean }) => <div {...rest} />,
@@ -28,13 +35,21 @@ export const Input = styled.input`
   outline: none;
 `;
 
-export const Tag = styled.span`
-  background-color: ${props => props.theme.primaryLighter};
+export const Tag = styled.span<{ isHighlighted: boolean }>`
+  background-color: ${getLightenColor};
   border-radius: 2px;
   border: 1px solid ${props => props.theme.primaryLighter};
+  cursor: default;
   font-size: 0.8em;
   padding: 2px 15px 2px 2px;
   position: relative;
+
+  ${props =>
+    props.isHighlighted
+      ? css`
+          background-color: ${props.theme.primaryLighter};
+        `
+      : null}
 
   & > span {
     cursor: default;
@@ -72,7 +87,7 @@ export const Option = styled.li<{ isFocused?: boolean }>`
   ${props =>
     props.isFocused
       ? css`
-          background-color: ${props.theme.primaryLighter};
+          background-color: ${getLightenColor};
         `
       : null}
 
@@ -80,7 +95,7 @@ export const Option = styled.li<{ isFocused?: boolean }>`
     props.onMouseDown
       ? css`
           &:hover {
-            background-color: ${props.theme.primaryLighter};
+            background-color: ${getLightenColor};
           }
         `
       : null}

@@ -8,7 +8,7 @@ describe("Calendar utils", () => {
       const result = getMonth(month);
       const expectedResult = [
         [
-          new Date(2018, 11, 31),
+          null,
           new Date(2019, 0, 1),
           new Date(2019, 0, 2),
           new Date(2019, 0, 3),
@@ -48,9 +48,9 @@ describe("Calendar utils", () => {
           new Date(2019, 0, 29),
           new Date(2019, 0, 30),
           new Date(2019, 0, 31),
-          new Date(2019, 1, 1),
-          new Date(2019, 1, 2),
-          new Date(2019, 1, 3),
+          null,
+          null,
+          null,
         ],
       ];
 

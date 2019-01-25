@@ -103,7 +103,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           return;
         }
 
-        if (this.state.highlightedTagIndex !== null) {
+        if ((this.state.highlightedTagIndex as number | null) !== null) {
           this.setState({ highlightedTagIndex: null });
           const nextValue = [...this.props.value];
           nextValue.pop();

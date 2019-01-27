@@ -1,0 +1,42 @@
+---
+name: Toast
+---
+
+import { Playground, PropsTable } from 'docz';
+import Toast from './';
+
+# Toast.Container
+
+Use `Toast.Container` to position the `Toast`s on a side
+
+<PropsTable of={Toast.Container} />
+
+## Basic usage
+
+You MUST use `Toast.Container` if you want the toasts to be positioned on a side
+
+<Playground>
+  <div>
+    <span>See the toasts at top right position</span>
+  
+    <Toast.Container position='top-right'>
+      <Toast>Hey ! I'm a toast</Toast>
+      <Toast>I am too !</Toast>
+      <Toast>Hey, don't give a fuck, <strong>I AM</strong> a toast Hey, don't give a fuck, I AM a toast</Toast>
+    </Toast.Container>
+  </div>
+</Playground>
+
+# Toast
+
+<PropsTable of={Toast} />
+
+## Basic usage
+
+__Reminder__ : you MUST use `Toast.Container` if you want the toasts to be positioned on a side
+
+<Playground>
+  <Toast>Hey ! I'm a toast</Toast>
+  <br />
+  <Toast>With some <strong>HTML</strong> content</Toast>
+</Playground>

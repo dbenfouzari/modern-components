@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyledButton } from "./Button.styles";
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * What will be shown in the button
    *
@@ -46,8 +46,15 @@ export const Button = ({
   onClick,
   raised = true,
   type = "button",
+  ...props
 }: ButtonProps) => (
-  <StyledButton type={type} role="button" raised={raised} onClick={onClick}>
+  <StyledButton
+    type={type}
+    role="button"
+    raised={raised}
+    onClick={onClick}
+    {...props}
+  >
     {children}
   </StyledButton>
 );

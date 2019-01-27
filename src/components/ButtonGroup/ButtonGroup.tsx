@@ -4,7 +4,9 @@ import { ButtonProps } from "../Button/Button";
 import { StyledButton } from "../Button/Button.styles";
 
 interface ButtonGroupProps {
-  children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+  children:
+    | React.ReactElement<ButtonProps>
+    | Array<React.ReactElement<ButtonProps>>;
 }
 
 const StyledGroup = styled.div`

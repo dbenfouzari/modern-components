@@ -26,22 +26,22 @@ const getPosition = (position: ToastContainerProps["position"]) => {
 
     case "top-left":
       return {
-        top: MARGIN,
         left: MARGIN,
+        top: MARGIN,
       };
 
     case "top":
       return {
-        top: MARGIN,
         left: "50%",
+        top: MARGIN,
         transform: "translateX(-50%)",
       };
 
     case "top-right":
     default:
       return {
-        top: MARGIN,
         right: MARGIN,
+        top: MARGIN,
       };
   }
 };

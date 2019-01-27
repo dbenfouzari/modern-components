@@ -4,7 +4,9 @@ import { ToastProps } from "./Toast";
 import { ToastContainerStyled } from "./Toast.styles";
 
 export interface ToastContainerProps {
-  children: React.ReactElement<ToastProps> | React.ReactElement<ToastProps>[];
+  children:
+    | React.ReactElement<ToastProps>
+    | Array<React.ReactElement<ToastProps>>;
   /**
    * @default "top-right"
    */
